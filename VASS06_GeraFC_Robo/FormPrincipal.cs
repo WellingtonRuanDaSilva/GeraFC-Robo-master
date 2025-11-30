@@ -286,7 +286,7 @@ namespace VASS06_GeraFC_Robo
                     DgvSaidas = this.dgv_Saidas
                 };
 
-                //GeradorDbUsuario.Gerar(ref data);
+                GeradorDbUsuario.Gerar(ref data);
                 GeradorDbInstancia.Gerar(ref data);
                 //GeradorFC.Gerar(ref data);
 

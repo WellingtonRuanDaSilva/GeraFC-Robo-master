@@ -1,274 +1,223 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace VASS06_GeraFC_Robo
 {
     public static class GeradorDbUsuario
     {
-        public static void Gerar(ref EstacaoData data)
+        public static void Gerar(ref RoboData data)
         {
-            // Bloco 1: Copiar o template base do DB de Usuário
-            // =================================================================
-            string originPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources/DB_Anwender", "DBAnwender_Template.xml");
-            string destinationPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Export/DB_Anwender", $"{data.SKNumber}{data.StationNumber}{data.StationType}.xml");
+            // Caminhos de Origem e Destino
+            string resourcesPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources/DB_Anwender");
+            string originPath = Path.Combine(resourcesPath, "DBAnwender_Template.txt");
+            string fileName = $"{data.SKNumber}{data.StationNumber}{data.RobNumber}.xml"; // Ex: 110010R01.xml
+            string exportDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Export/DB_Anwender");
+            string destinationPath = Path.Combine(exportDir, fileName);
 
+            // Bloco 1: Preparar diretórios e copiar o template base
+            // =================================================================
             try
             {
-                Directory.CreateDirectory(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Export"));
-                Directory.CreateDirectory(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Export/DB_Anwender"));
+                if (!Directory.Exists(exportDir))
+                    Directory.CreateDirectory(exportDir);
 
                 if (!File.Exists(originPath))
                 {
-                    MessageBox.Show("O arquivo DBAnwender_Template.xml não foi encontrado.", "InfoRMI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Arquivo de template não encontrado:\n{originPath}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                string content = File.ReadAllText(originPath);
-                File.WriteAllText(destinationPath, content);
+                File.Copy(originPath, destinationPath, true);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao copiar o arquivo: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao criar arquivo de destino: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Bloco 2: Ler todos os templates e preencher o DB de Usuário
+            // Bloco 2: Processar Templates e Preencher Dados
             // =================================================================
             try
             {
-                if (!File.Exists(destinationPath))
-                {
-                    MessageBox.Show("O arquivo de destino não foi encontrado após a cópia.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                // Caminhos de todos os templates de componentes
-                string basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources/DB_Anwender");
-                string ktTemplatePath = Path.Combine(basePath, "KT_Template.xml");
-                string fmTemplatePath = Path.Combine(basePath, "FM_Template.xml");
-                string viTemplatePath = Path.Combine(basePath, "VI_Template.xml");
-                string operatorTemplatePath = Path.Combine(basePath, "Operator_Template.xml");
-                string baTemplatePath = Path.Combine(basePath, "BA_Template.xml");
-
-                // Novos caminhos para os templates de cilindro
-                string cylinderTemplatePath = Path.Combine(basePath, "Cylinder_Template.xml");
-                string saugerTemplatePath = Path.Combine(basePath, "STB_Ventil_Sauger_Template.xml");
-                string handTemplatePath = Path.Combine(basePath, "STB_Ventil_Hand_SP_Template.xml");
-                string v300TemplatePath = Path.Combine(basePath, "STB_Ventil_300_Template.xml");
-
-
-                // Leitura dos conteúdos dos templates
                 string dbContent = File.ReadAllText(destinationPath);
-                string ktTemplate = File.ReadAllText(ktTemplatePath);
-                string fmTemplate = File.ReadAllText(fmTemplatePath);
-                string viTemplate = File.ReadAllText(viTemplatePath);
-                string operatorTemplate = File.ReadAllText(operatorTemplatePath);
-                string baContent = File.ReadAllText(baTemplatePath);
-                string inverterTemplate = "";
 
-                // Leitura dos novos templates de cilindro
-                string cylinderStdTemplate = File.ReadAllText(cylinderTemplatePath);
-                string cylinderSaugerTemplate = File.ReadAllText(saugerTemplatePath);
-                string cylinderHandTemplate = File.ReadAllText(handTemplatePath);
-                string cylinder300Template = File.ReadAllText(v300TemplatePath);
+                // Carregar templates de itens
+                string eTemplate = LoadTemplateBlock(Path.Combine(resourcesPath, "E_Template.txt"));
+                string aTemplate = LoadTemplateBlock(Path.Combine(resourcesPath, "A_Template.txt"));
+                string fmTemplate = LoadTemplateBlock(Path.Combine(resourcesPath, "FM_Template.xml"));
 
+                // Templates de Ferramentas
+                string klTemplate = ReadFileSafe(Path.Combine(resourcesPath, "KL_Template.txt")); // Kleben
+                string skTemplate = ReadFileSafe(Path.Combine(resourcesPath, "SK_Template.txt")); // Schweissen
+                string czTemplate = ReadFileSafe(Path.Combine(resourcesPath, "CZ_Template.txt")); // Durchsetzfügen (Clinch)
+                string kwTemplate = ReadFileSafe(Path.Combine(resourcesPath, "KW_Template.txt")); // Kappenwechsler
 
-                // Substituições iniciais: Nome e número do DB
-                dbContent = dbContent.Replace("[nomeDB]", $"{data.SKNumber}{data.StationNumber}{data.StationType}")
-                                     .Replace("[numeroDB]", data.DBAnwenderNumber.ToString());
+                // 2.1 Entradas (Inputs)
+                StringBuilder inputsContent = new StringBuilder();
+                if (data.DgvEntradas != null)
+                {
+                    foreach (DataGridViewRow row in data.DgvEntradas.Rows)
+                    {
+                        if (row.IsNewRow) continue;
+                        string numero = row.Cells[0]?.Value?.ToString()?.Trim() ?? "";
+                        string descricao = row.Cells[4]?.Value?.ToString()?.Trim() ?? "";
 
-                StringBuilder ktsContent = new StringBuilder();
+                        if (!string.IsNullOrEmpty(numero) && !string.IsNullOrEmpty(eTemplate))
+                        {
+                            string item = ReplaceDescription(eTemplate, descricao);
+                            item = item.Replace("[numero_entrada]", numero);
+                            inputsContent.AppendLine(item);
+                        }
+                    }
+                }
+
+                // 2.2 Saídas (Outputs)
+                StringBuilder outputsContent = new StringBuilder();
+                if (data.DgvSaidas != null)
+                {
+                    foreach (DataGridViewRow row in data.DgvSaidas.Rows)
+                    {
+                        if (row.IsNewRow) continue;
+                        string numero = row.Cells[0]?.Value?.ToString()?.Trim() ?? "";
+                        string descricao = row.Cells[4]?.Value?.ToString()?.Trim() ?? "";
+
+                        if (!string.IsNullOrEmpty(numero) && !string.IsNullOrEmpty(aTemplate))
+                        {
+                            string item = ReplaceDescription(aTemplate, descricao);
+                            item = item.Replace("[numero_saida]", numero);
+                            outputsContent.AppendLine(item);
+                        }
+                    }
+                }
+
+                // 2.3 FMs (Fertigmeldung)
                 StringBuilder fmsContent = new StringBuilder();
-                StringBuilder visContent = new StringBuilder();
-                StringBuilder cylindersContent = new StringBuilder();
-                StringBuilder invertersContent = new StringBuilder();
-                StringBuilder operatorsContent = new StringBuilder();
-
-                // Bloco 2.1: Geração das memórias de KT (Controle de Peça)
-                // =================================================================
-                HashSet<string> addedKT = new HashSet<string>();
-                foreach (DataGridViewRow row in data.DgvSensores.Rows)
+                if (data.DgvFMs != null)
                 {
-                    if (row.IsNewRow) continue;
-                    string name = row.Cells[0].Value.ToString();
-                    if (!string.IsNullOrEmpty(row.Cells[1].Value.ToString()))
+                    foreach (DataGridViewRow row in data.DgvFMs.Rows)
                     {
-                        addedKT.Add(name.Substring(name.Length - 2));
-                    }
-                }
-                foreach (string ktNumber in addedKT)
-                {
-                    string ktContent = ktTemplate.Replace("[numero_KT]", ktNumber);
-                    ktsContent.AppendLine(ktContent);
-                }
+                        if (row.IsNewRow) continue;
+                        string numero = row.Cells[0]?.Value?.ToString()?.Trim() ?? "";
+                        string descricao = row.Cells[1]?.Value?.ToString()?.Trim() ?? "";
 
-                // Bloco 2.2: Geração das memórias de FM (Fim de Trabalho)
-                // =================================================================
-                foreach (DataGridViewRow row in data.DgvFMs.Rows)
-                {
-                    if (row.IsNewRow) continue;
-                    string numeroFM = row.Cells[0]?.Value?.ToString()?.Trim() ?? "";
-                    string descricaoFM = row.Cells[1]?.Value?.ToString()?.Trim() ?? "";
-                    if (!string.IsNullOrEmpty(numeroFM) && !string.IsNullOrEmpty(descricaoFM))
-                    {
-                        string fmContent = fmTemplate.Replace("[numero_fm]", numeroFM)
-                                                     .Replace("[descricao_fm]", descricaoFM);
-                        fmsContent.AppendLine(fmContent);
-                    }
-                }
-
-                // Bloco 2.3: Geração das memórias de VI (Ilhas de Válvula)
-                // =================================================================
-                HashSet<string> addedVI = new HashSet<string>();
-                foreach (DataGridViewRow row in data.DgvCilindros.Rows)
-                {
-                    if (row.IsNewRow) continue;
-                    string numeroVI = row.Cells[0]?.Value?.ToString()?.Trim() ?? "";
-                    if (!string.IsNullOrEmpty(numeroVI) && addedVI.Add(numeroVI))
-                    {
-                        string viContent = viTemplate.Replace("[numero_VI]", numeroVI);
-                        visContent.AppendLine(viContent);
-                    }
-                }
-
-                // Bloco 2.4: Geração das memórias de Cilindros (Lógica Refatorada)
-                // =================================================================
-                HashSet<string> addedCylinder = new HashSet<string>();
-                foreach (DataGridViewRow row in data.DgvCilindros.Rows)
-                {
-                    if (row.IsNewRow) continue;
-                    string numeroCilindro = row.Cells[1]?.Value?.ToString()?.Trim() ?? "";
-                    if (string.IsNullOrEmpty(numeroCilindro) || !addedCylinder.Add(numeroCilindro))
-                    {
-                        continue;
-                    }
-
-                    string descricaoCilindro = row.Cells[3]?.Value?.ToString()?.Trim() ?? "";
-                    string fbCilindro = row.Cells[4]?.Value?.ToString()?.Trim().ToUpper() ?? "";
-
-                    string selectedTemplate;
-
-                    // Seleciona o template correto com base no tipo de FB
-                    if (fbCilindro == "SAUGER")
-                    {
-                        selectedTemplate = cylinderSaugerTemplate;
-                    }
-                    else if (fbCilindro == "HAND")
-                    {
-                        selectedTemplate = cylinderHandTemplate;
-                    }
-                    else if (fbCilindro == "300")
-                    {
-                        selectedTemplate = cylinder300Template;
-                    }
-                    else
-                    {
-                        selectedTemplate = cylinderStdTemplate;
-                    }
-
-                    // Substitui os placeholders no template selecionado
-                    string cylinderContent = selectedTemplate
-                        .Replace("[numero_cilindro]", numeroCilindro)
-                        .Replace("[descricao_cilindro]", descricaoCilindro);
-
-                    // O placeholder [tipo_de_cilindro] não é mais necessário, pois o tipo já está no template.
-                    // Mas caso ainda exista no template padrão, podemos remover ou substituir.
-                    cylinderContent = cylinderContent.Replace("[tipo_de_cilindro]", "STB_Ventil");
-
-
-                    cylindersContent.AppendLine(cylinderContent);
-                }
-
-                // Bloco 2.5: Geração das memórias de Inversores (para RB)
-                // =================================================================
-                if (data.StationType.ToUpper() == "RB" || data.StationType.ToUpper() == "RB1")
-                {
-                    string inverterTemplatePath = Path.Combine(basePath, "STB_Elefant2_AMX_2P_Template.xml");
-                    if (File.Exists(inverterTemplatePath))
-                    {
-                        inverterTemplate = File.ReadAllText(inverterTemplatePath);
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Aviso: Template 'STB_Elefant2_AMX_2P_Template.xml' não encontrado.", "Template Faltando", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-                if ((data.StationType.ToUpper() == "RB" || data.StationType.ToUpper() == "RB1") && !string.IsNullOrEmpty(inverterTemplate))
-                {
-                    string heberHubRemechTemplatePath = Path.Combine(basePath, "STB_HUBRemech_Template.xml");
-                    string heberSewAmaBinTemplatePath = Path.Combine(basePath, "STB_SEW_AMA_BIN_Template.xml");
-                    string heberHubRemechTemplate = File.Exists(heberHubRemechTemplatePath) ? File.ReadAllText(heberHubRemechTemplatePath) : "";
-                    string heberSewAmaBinTemplate = File.Exists(heberSewAmaBinTemplatePath) ? File.ReadAllText(heberSewAmaBinTemplatePath) : "";
-
-                    foreach (DataGridViewRow row in data.DgvInversores.Rows)
-                    {
-                        if (row.IsNewRow || row.Cells[0].Value == null) continue;
-
-                        string nomeDispositivo = row.Cells[0]?.Value?.ToString()?.Trim();
-                        string descricaoDispositivo = row.Cells[1]?.Value?.ToString()?.Trim();
-                        string descricaoUpper = descricaoDispositivo.ToUpper();
-
-                        if (descricaoUpper == "ROLLENBAHN" && !string.IsNullOrEmpty(inverterTemplate))
+                        if (!string.IsNullOrEmpty(numero) && !string.IsNullOrEmpty(fmTemplate))
                         {
-                            if (!string.IsNullOrEmpty(nomeDispositivo))
-                            {
-                                string inverterBlock = inverterTemplate
-                                                           .Replace("[nome_dispositivo]", nomeDispositivo)
-                                                           .Replace("[descricao_dispositivo]", descricaoDispositivo);
-                                invertersContent.AppendLine(inverterBlock);
-                            }
-                        }
-                        else if (descricaoUpper == "HEBER")
-                        {
-                            if (!string.IsNullOrEmpty(nomeDispositivo) && !string.IsNullOrEmpty(heberHubRemechTemplate) && !string.IsNullOrEmpty(heberSewAmaBinTemplate))
-                            {
-                                string hubRemechBlock = heberHubRemechTemplate
-                                                           .Replace("[nome_dispositivo]", nomeDispositivo)
-                                                           .Replace("[descricao_dispositivo]", descricaoDispositivo);
-                                invertersContent.AppendLine(hubRemechBlock);
-                                string sewAmaBinBlock = heberSewAmaBinTemplate
-                                                           .Replace("[nome_dispositivo]", nomeDispositivo)
-                                                           .Replace("[descricao_dispositivo]", descricaoDispositivo);
-                                invertersContent.AppendLine(sewAmaBinBlock);
-                            }
+                            string item = fmTemplate;
+                            // Remove números fixos do template se existirem (ex: FM1 -> FM[numero])
+                            if (item.Contains("Name=\"FM1\"")) item = item.Replace("Name=\"FM1\"", $"Name=\"FM{numero}\"");
+                            else item = item.Replace("[numero_fm]", numero);
+
+                            item = ReplaceDescription(item, descricao);
+                            item = item.Replace("[descricao_fm]", descricao);
+                            fmsContent.AppendLine(item);
                         }
                     }
                 }
 
-                // Bloco 2.6: Geração das memórias de Operador (SubBA)
+                // 2.4 Ferramentas (Tools)
                 // =================================================================
-                if (data.IsSubBA)
+                StringBuilder toolsContent = new StringBuilder();
+                if (data.DgvFerramentas != null)
                 {
-                    string operatorContent = operatorTemplate.Replace("[nome_estacao]", $"{data.SKNumber}{data.StationNumber}{data.StationType}");
-                    operatorsContent.AppendLine(operatorContent);
+                    // Contadores para gerar nomes automáticos
+                    int skCount = 1, klCount = 1, czCount = 1, kwCount = 1;
+
+                    foreach (DataGridViewRow row in data.DgvFerramentas.Rows)
+                    {
+                        if (row.IsNewRow) continue;
+                        string textoFerramenta = row.Cells[0]?.Value?.ToString()?.Trim() ?? "";
+                        string textoUpper = textoFerramenta.ToUpper();
+
+                        string selectedTemplate = "";
+                        string nomeVar = "";
+
+                        // LÓGICA ATUALIZADA: Verifica palavras completas E abreviações
+                        if (textoUpper.Contains("KLEB") || textoUpper.Contains("GLUE") || textoUpper.Contains("KL"))
+                        {
+                            selectedTemplate = klTemplate;
+                            nomeVar = $"KL{klCount++}";
+                        }
+                        else if (textoUpper.Contains("SCHWEISS") || textoUpper.Contains("WELD") || textoUpper.Contains("ZANGE") || textoUpper.Contains("SK"))
+                        {
+                            selectedTemplate = skTemplate;
+                            nomeVar = $"SK{skCount++}";
+                        }
+                        else if (textoUpper.Contains("DURCHSETZ") || textoUpper.Contains("CLINCH") || textoUpper.Contains("TOX") || textoUpper.Contains("CZ"))
+                        {
+                            selectedTemplate = czTemplate;
+                            nomeVar = $"CZ{czCount++}";
+                        }
+                        else if (textoUpper.Contains("WECHSLER") || textoUpper.Contains("CHANGE") || textoUpper.Contains("KW"))
+                        {
+                            selectedTemplate = kwTemplate;
+                            nomeVar = $"KW{kwCount++}";
+                        }
+
+                        if (!string.IsNullOrEmpty(selectedTemplate))
+                        {
+                            // Se o texto da célula já parecer um código (ex: "KL01", "SK2"), usa ele direto.
+                            // Regex verifica se começa com 2 letras seguidas de digitos, ex: AA1...
+                            if (textoFerramenta.Length <= 6 && Regex.IsMatch(textoFerramenta, @"^[A-Z]{2}\d+"))
+                                nomeVar = textoFerramenta;
+
+                            string item = selectedTemplate.Replace("[nome_ferramenta]", nomeVar);
+
+                            // Usa o nome da ferramenta como descrição no comentário
+                            item = ReplaceDescription(item, textoFerramenta);
+
+                            toolsContent.AppendLine(item);
+                        }
+                    }
                 }
 
-                // Bloco 3: Montagem Final e Salvamento do Arquivo
-                // =================================================================
-                dbContent = dbContent.Replace("[lista_de_KTs]", ktsContent.ToString())
+                // 3. Substituição Final no Arquivo
+                dbContent = dbContent.Replace("[nomeDB]", $"{data.SKNumber}{data.StationNumber}{data.RobNumber}")
+                                     .Replace("[numeroDB]", data.DBAnwenderNumber.ToString())
                                      .Replace("[lista_de_FMs]", fmsContent.ToString())
-                                     .Replace("[lista_de_VIs]", visContent.ToString())
-                                     .Replace("[lista_de_cilindros]", cylindersContent.ToString())
-                                     .Replace("[lista_de_inversores]", invertersContent.ToString())
-                                     .Replace("[memorias_de_operador]", operatorsContent.ToString())
-                                     .Replace("[modo_de_operacao]", baContent.ToString());
+                                     .Replace("[lista_de_entrada]", inputsContent.ToString())
+                                     .Replace("[lista_de_saida]", outputsContent.ToString())
+                                     .Replace("[lista_de_ferramentas]", toolsContent.ToString());
 
                 File.WriteAllText(destinationPath, dbContent);
 
-                // Incrementa o número do DB para o próximo arquivo
-                if (data.DBAnwenderNumber < 149)
-                {
-                    data.DBAnwenderNumber++;
-                }
+                // Incrementa número do DB
+                if (data.DBAnwenderNumber < 149) data.DBAnwenderNumber++;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao preencher o arquivo DB de Usuário: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao processar dados do DB de Usuário: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        // Métodos Auxiliares
+
+        private static string ReadFileSafe(string path)
+        {
+            return File.Exists(path) ? File.ReadAllText(path) : "";
+        }
+
+        private static string LoadTemplateBlock(string path)
+        {
+            if (!File.Exists(path)) return "";
+            string content = File.ReadAllText(path);
+
+            // Tenta pegar apenas o primeiro bloco <Member>...</Member>
+            int start = content.IndexOf("<Member");
+            if (start == -1) return content;
+            int end = content.IndexOf("</Member>", start);
+            if (end == -1) return content;
+
+            return content.Substring(start, (end + 9) - start);
+        }
+
+        private static string ReplaceDescription(string content, string newDescription)
+        {
+            // Substitui o texto dentro de <MultiLanguageText Lang="de-DE">...</MultiLanguageText>
+            string pattern = @"(<MultiLanguageText Lang=""de-DE"">)(.*?)(</MultiLanguageText>)";
+            return Regex.Replace(content, pattern, $"$1{newDescription}$3");
         }
     }
 }
-
