@@ -1,0 +1,284 @@
+<SW.Blocks.CompileUnit ID="[ID_unico]" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="[ID_tag]">
+      <Symbol>
+        <Component Name="[nome_robo]" />
+        <Component Name="Rob" />
+        <Component Name="A" />
+        <Component Name="A15_PF0" />
+        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="1560" Informative="true" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="[ID_tag]">
+      <Symbol>
+        <Component Name="[nome_robo]" />
+        <Component Name="Rob" />
+        <Component Name="A" />
+        <Component Name="A16_SAK" />
+        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="1568" Informative="true" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="[ID_tag]">
+      <Symbol>
+        <Component Name="[nome_robo]" />
+        <Component Name="Rob" />
+        <Component Name="oRob" />
+        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="3320" Informative="true" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="[ID_tag]">
+      <Symbol>
+        <Component Name="[nome_robo]" />
+        <Component Name="Rob" />
+        <Component Name="A" />
+        <Component Name="A73_80_Wkz_FRG" />
+        <Address Area="None" Type="Byte" BlockNumber="100" BitOffset="1784" Informative="true" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="[ID_tag]">
+      <Constant>
+        <ConstantType>Word</ConstantType>
+        <ConstantValue>2#0111_1111</ConstantValue>
+        <StringAttribute Name="Format" Informative="true">Bin</StringAttribute>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="[ID_tag]">
+      <Symbol>
+        <Component Name="[nome_robo]" />
+        <Component Name="A73" />
+        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34384" Informative="true" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="[ID_tag]">
+      <Symbol>
+        <Component Name="[nome_robo]" />
+        <Component Name="A74" />
+        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34392" Informative="true" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="[ID_tag]">
+      <Symbol>
+        <Component Name="[nome_robo]" />
+        <Component Name="A75" />
+        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34400" Informative="true" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="[ID_tag]">
+      <Symbol>
+        <Component Name="[nome_robo]" />
+        <Component Name="A76" />
+        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34408" Informative="true" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="[ID_tag]">
+      <Symbol>
+        <Component Name="[nome_robo]" />
+        <Component Name="A77" />
+        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34416" Informative="true" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="[ID_tag]">
+      <Symbol>
+        <Component Name="[nome_robo]" />
+        <Component Name="A78" />
+        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34424" Informative="true" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="[ID_tag]">
+      <Symbol>
+        <Component Name="[nome_robo]" />
+        <Component Name="A79" />
+        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34432" Informative="true" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="[ID_tag]">
+      <Symbol>
+        <Component Name="[nome_robo]" />
+        <Component Name="A80" />
+        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34440" Informative="true" />
+      </Symbol>
+    </Access>
+    <Call UId="[ID_bloco]">
+      <CallInfo Name="FB_Rob_Frg" BlockType="FB">
+        <IntegerAttribute Name="BlockNumber" Informative="true">208</IntegerAttribute>
+        <DateAttribute Name="ParameterModifiedTS" Informative="true">2017-08-01T16:24:04</DateAttribute>
+        <Instance Scope="GlobalVariable" UId="[ID_instancia]">
+          <Component Name="[nome_robo]_Frg3#FB_Rob_Frg_DB" />
+          <Address Area="DB" Type="FB_Rob_Frg" BlockNumber="2094" BitOffset="0" Informative="true" />
+        </Instance>
+        <Parameter Name="PF0" Section="Input" Type="Bool">
+          <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
+        </Parameter>
+        <Parameter Name="SAK" Section="Input" Type="Bool">
+          <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
+        </Parameter>
+        <Parameter Name="ohne_Rob" Section="Input" Type="Bool">
+          <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
+        </Parameter>
+        <Parameter Name="Stell_Frg" Section="Input" Type="Byte">
+          <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
+        </Parameter>
+        <Parameter Name="Cfg" Section="Input" Type="Word">
+          <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
+        </Parameter>
+        <Parameter Name="Frg1" Section="Output" Type="Bool">
+          <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
+        </Parameter>
+        <Parameter Name="Frg2" Section="Output" Type="Bool">
+          <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
+        </Parameter>
+        <Parameter Name="Frg3" Section="Output" Type="Bool">
+          <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
+        </Parameter>
+        <Parameter Name="Frg4" Section="Output" Type="Bool">
+          <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
+        </Parameter>
+        <Parameter Name="Frg5" Section="Output" Type="Bool">
+          <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
+        </Parameter>
+        <Parameter Name="Frg6" Section="Output" Type="Bool">
+          <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
+        </Parameter>
+        <Parameter Name="Frg7" Section="Output" Type="Bool">
+          <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
+        </Parameter>
+        <Parameter Name="Frg8" Section="Output" Type="Bool">
+          <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
+        </Parameter>
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="[ID_unico]">
+      <Powerrail />
+      <NameCon UId="[ID_bloco]" Name="en" />
+    </Wire>
+    <Wire UId="[ID_unico]">
+      <IdentCon UId="[ID_tag]" />
+      <NameCon UId="[ID_bloco]" Name="PF0" />
+    </Wire>
+    <Wire UId="[ID_unico]">
+      <IdentCon UId="[ID_tag]" />
+      <NameCon UId="[ID_bloco]" Name="SAK" />
+    </Wire>
+    <Wire UId="[ID_unico]">
+      <IdentCon UId="[ID_tag]" />
+      <NameCon UId="[ID_bloco]" Name="ohne_Rob" />
+    </Wire>
+    <Wire UId="[ID_unico]">
+      <IdentCon UId="[ID_tag]" />
+      <NameCon UId="[ID_bloco]" Name="Stell_Frg" />
+    </Wire>
+    <Wire UId="[ID_unico]">
+      <IdentCon UId="[ID_tag]" />
+      <NameCon UId="[ID_bloco]" Name="Cfg" />
+    </Wire>
+    <Wire UId="[ID_unico]">
+      <NameCon UId="[ID_bloco]" Name="Frg1" />
+      <IdentCon UId="[ID_tag]" />
+    </Wire>
+    <Wire UId="[ID_unico]">
+      <NameCon UId="[ID_bloco]" Name="Frg2" />
+      <IdentCon UId="[ID_tag]" />
+    </Wire>
+    <Wire UId="[ID_unico]">
+      <NameCon UId="[ID_bloco]" Name="Frg3" />
+      <IdentCon UId="[ID_tag]" />
+    </Wire>
+    <Wire UId="[ID_unico]">
+      <NameCon UId="[ID_bloco]" Name="Frg4" />
+      <IdentCon UId="[ID_tag]" />
+    </Wire>
+    <Wire UId="[ID_unico]">
+      <NameCon UId="[ID_bloco]" Name="Frg5" />
+      <IdentCon UId="[ID_tag]" />
+    </Wire>
+    <Wire UId="[ID_unico]">
+      <NameCon UId="[ID_bloco]" Name="Frg6" />
+      <IdentCon UId="[ID_tag]" />
+    </Wire>
+    <Wire UId="[ID_unico]">
+      <NameCon UId="[ID_bloco]" Name="Frg7" />
+      <IdentCon UId="[ID_tag]" />
+    </Wire>
+    <Wire UId="[ID_unico]">
+      <NameCon UId="[ID_bloco]" Name="Frg8" />
+      <IdentCon UId="[ID_tag]" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>LAD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="[ID_unico]" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sk-SK</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
+                <AttributeList>
+                  <Culture>es-ES</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
+                <AttributeList>
+                  <Culture>pt-BR</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="[ID_unico]" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Werkzeugfreigaben an Anlage</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
+                <AttributeList>
+                  <Culture>sk-SK</Culture>
+                  <Text>Werkzeugfreigaben an Anlage</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
+                <AttributeList>
+                  <Culture>es-ES</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
+                <AttributeList>
+                  <Culture>pt-BR</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>

@@ -1,0 +1,4 @@
+    <Wire UId="[ID_unico]">
+      <IdentCon UId="[ID_tag]" />
+      <NameCon UId="[ID_elemento]" Name="operand" />
+    </Wire>

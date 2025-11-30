@@ -1,0 +1,41 @@
+FB_Rob_PN_A_DB 4 tags
+
+FB_RobFolge_8_DB 20 tags
+
+BIT_TO_BYTE 9 tags  *
+
+FB_Rob_DB 44 tags  
+
+FB_Rob_Korr_DB 7 tags
+
+FB_Rob_FM_DB 19 tags
+
+FB_Status_Global_DB 3 tags
+
+FB_Rob_Frg_Ver_DB 43 tags
+
+Frg1#FB_Rob_Frg_DB 13 tags
+
+Frg2#FB_Rob_Frg_DB 13 tags
+
+Frg3#FB_Rob_Frg_DB 13 tags
+
+StellFrg1#FB_Rob_StellFrg_DB 17 tags
+
+StellFrg2#FB_Rob_StellFrg_DB 17 tags
+
+StellFrg3#FB_Rob_StellFrg_DB 17 tags
+
+FB_Rob_Schweissen_DB 19 tags
+
+FB_Rob_Kappenw_DB 15 tags
+
+FB_Rob_FehlerNr_DB 16 tags
+
+FB_Rob_PN_E_DB 3 tags
+
+FB_Rob_Greifer_DB 13 tags
+
+FB_Rob_MIGMAG_DB 22 tags
+
+FB_Taktzeit_Plus_DB 13 tags

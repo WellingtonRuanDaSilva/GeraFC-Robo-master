@@ -1,0 +1,8 @@
+<Access Scope="GlobalVariable" UId="[ID_unico]">
+  <Symbol>
+    <Component Name="[componente_principal]" />
+    <Component Name="[componente_secundario]" />
+	<Component Name="[componente_terciario]" />
+    <Address Area="None" Type="Bool" BlockNumber="148" BitOffset="368" Informative="true" />
+  </Symbol>
+</Access>

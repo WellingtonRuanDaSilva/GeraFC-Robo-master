@@ -1,0 +1,4 @@
+<Wire UId="[ID_unico]">
+      <Powerrail />
+      <NameCon UId="[ID_primeira_conexao]" Name="in" />
+    </Wire>

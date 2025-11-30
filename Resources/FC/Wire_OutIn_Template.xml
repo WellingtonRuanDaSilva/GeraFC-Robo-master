@@ -1,0 +1,4 @@
+    <Wire UId="[ID_unico]">
+      <NameCon UId="[ID_elemento_saida]" Name="out" />
+      <NameCon UId="[ID_elemento_entrada]" Name="in" />
+    </Wire>
