@@ -99,7 +99,7 @@
       <MemoryLayout ReadOnly="true">Optimized</MemoryLayout>
       <MemoryReserve ReadOnly="true">0</MemoryReserve>
       <ModifiedDate ReadOnly="true">2024-11-12T16:05:07.6550151Z</ModifiedDate>
-      <Name>[nome_robo]#FB_StatVar_DB</Name>
+      <Name>[nome_robo][numero_sinal][nome_sinal]#FB_StatVar_DB</Name>
       <Number>[numero_db]</Number>
       <ParameterModified ReadOnly="true">2017-09-18T08:34:36.4573557Z</ParameterModified>
       <ProgrammingLanguage>DB</ProgrammingLanguage>
@@ -108,12 +108,12 @@
   <BlockInstSupervisionGroup>
     <BlockInstSupervision>
       <Number>97</Number>
-      <StateStruct Name="[nome_robo]#FB_StatVar_DB.#001_O_1" />
+      <StateStruct Name="[nome_robo][numero_sinal][nome_sinal]#FB_StatVar_DB.#001_O_1" />
       <BlockTypeSupervisionNumber>1</BlockTypeSupervisionNumber>
     </BlockInstSupervision>
     <BlockInstSupervision>
       <Number>98</Number>
-      <StateStruct Name="[nome_robo]#FB_StatVar_DB.#255_O_1" />
+      <StateStruct Name="[nome_robo][numero_sinal][nome_sinal]#FB_StatVar_DB.#255_O_1" />
       <BlockTypeSupervisionNumber>1</BlockTypeSupervisionNumber>
     </BlockInstSupervision>
   </BlockInstSupervisionGroup>

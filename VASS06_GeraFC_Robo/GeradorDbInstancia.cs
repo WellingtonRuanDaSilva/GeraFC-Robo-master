@@ -180,6 +180,7 @@ namespace VASS06_GeraFC_Robo
                             }
                         }
                     }
+                    continue;
                 }
 
                 //Logica de Frgs
@@ -200,10 +201,11 @@ namespace VASS06_GeraFC_Robo
                                 if (data.DBInstanzenNumber < 20000) data.DBInstanzenNumber++;
                             }
                         }
+                    continue;
                 }
 
                 //Logica de StellFrgs
-                if (templateName == "#FB_Rob_Frg_DB.xml")
+                if (templateName == "#FB_Rob_StellFrg_DB.xml")
                 {
                     for (int i = 0; i < 3; i++)
                     {
@@ -220,6 +222,33 @@ namespace VASS06_GeraFC_Robo
                             if (data.DBInstanzenNumber < 20000) data.DBInstanzenNumber++;
                         }
                     }
+                    continue;
+                }
+
+                if (templateName == "#FB_StatVar_DB.xml")
+                {
+                    if (data.inputsAmount > 0)
+                    {
+                        for (int i = 0; i < data.inputsAmount; i++)
+                        {
+                            string numeroSinal = data.DgvEntradas.Rows[i].Cells[0].Value.ToString().Trim();
+                            string nomeSinal = data.DgvEntradas.Rows[i].Cells[1].Value.ToString().Trim();
+                            if (!string.IsNullOrEmpty(nomeSinal) && nomeSinal.ToUpper().StartsWith("PF"))
+                            {
+                                fileName = $"{data.SKNumber}{data.StationNumber}{data.RobNumber}_A{numeroSinal}_{nomeSinal}{templateName}";
+                                content = File.ReadAllText(FBTemplate)
+                                    .Replace("[nome_robo]", $"{data.SKNumber}{data.StationNumber}{data.RobNumber}")
+                                    .Replace("[numero_sinal]", $"_A{numeroSinal}")
+                                    .Replace("[nome_sinal]", $"_{nomeSinal}")
+                                    .Replace("[numero_db]", data.DBInstanzenNumber.ToString());
+
+                                destinationPath = Path.Combine(destinationFolder, fileName);
+                                File.WriteAllText(destinationPath, content);
+                                if (data.DBInstanzenNumber < 20000) data.DBInstanzenNumber++;
+                            }
+                        }
+                    }
+                    continue;
                 }
 
                 // Lógica de generica para templates

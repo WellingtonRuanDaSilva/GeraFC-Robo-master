@@ -12,35 +12,77 @@
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
-        <Component Name="FrgFolg1" />
+        [linha_adicional]
         <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34248" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="LiteralConstant" UId="[ID_tag]">
       <Constant>
         <ConstantType>Byte</ConstantType>
-        <ConstantValue>1</ConstantValue>
+        <ConstantValue>[numero_folge]</ConstantValue>
         <StringAttribute Name="Format" Informative="true">Dec_unsigned</StringAttribute>
       </Constant>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
-        <Component Name="FrgFolg2" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34256" Informative="true" />
+		  [linha_adicional]
+		  <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34256" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="LiteralConstant" UId="[ID_tag]">
       <Constant>
         <ConstantType>Byte</ConstantType>
-        <ConstantValue>2</ConstantValue>
+        <ConstantValue>[numero_folge]</ConstantValue>
         <StringAttribute Name="Format" Informative="true">Dec_unsigned</StringAttribute>
       </Constant>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
-        <Component Name="DB_ARG" />
-        <Component Name="VKE=0" />
+        <Component Name="[nome_robo]" />
+        [linha_adicional]
+        <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="93448" Informative="true" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="[ID_tag]">
+      <Constant>
+        <ConstantType>Byte</ConstantType>
+        <ConstantValue>[numero_folge]</ConstantValue>
+        <StringAttribute Name="Format" Informative="true">Dec_unsigned</StringAttribute>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="[ID_tag]">
+      <Symbol>
+        <Component Name="[nome_robo]" />
+        [linha_adicional]
+        <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="93448" Informative="true" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="[ID_tag]">
+      <Constant>
+        <ConstantType>Byte</ConstantType>
+        <ConstantValue>[numero_folge]</ConstantValue>
+        <StringAttribute Name="Format" Informative="true">Dec_unsigned</StringAttribute>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="[ID_tag]">
+      <Symbol>
+        <Component Name="[nome_robo]" />
+        [linha_adicional]
+        <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="93448" Informative="true" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="[ID_tag]">
+      <Constant>
+        <ConstantType>Byte</ConstantType>
+        <ConstantValue>[numero_folge]</ConstantValue>
+        <StringAttribute Name="Format" Informative="true">Dec_unsigned</StringAttribute>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="[ID_tag]">
+      <Symbol>
+        <Component Name="[nome_robo]" />
+        [linha_adicional]
         <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="93448" Informative="true" />
       </Symbol>
     </Access>
@@ -53,71 +95,29 @@
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
-        <Component Name="DB_ARG" />
-        <Component Name="VKE=0" />
+        <Component Name="[nome_robo]" />
+        [linha_adicional]
         <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="93448" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="LiteralConstant" UId="[ID_tag]">
       <Constant>
         <ConstantType>Byte</ConstantType>
-        <ConstantValue>0</ConstantValue>
+        <ConstantValue>[numero_folge]</ConstantValue>
         <StringAttribute Name="Format" Informative="true">Dec_unsigned</StringAttribute>
       </Constant>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
-        <Component Name="DB_ARG" />
-        <Component Name="VKE=0" />
-        <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="93448" Informative="true" />
+        <Component Name="[nome_robo]" />
+		  [linha_adicional]
+		  <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="93448" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="LiteralConstant" UId="[ID_tag]">
       <Constant>
         <ConstantType>Byte</ConstantType>
-        <ConstantValue>0</ConstantValue>
-        <StringAttribute Name="Format" Informative="true">Dec_unsigned</StringAttribute>
-      </Constant>
-    </Access>
-    <Access Scope="GlobalVariable" UId="[ID_tag]">
-      <Symbol>
-        <Component Name="DB_ARG" />
-        <Component Name="VKE=0" />
-        <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="93448" Informative="true" />
-      </Symbol>
-    </Access>
-    <Access Scope="LiteralConstant" UId="[ID_tag]">
-      <Constant>
-        <ConstantType>Byte</ConstantType>
-        <ConstantValue>0</ConstantValue>
-        <StringAttribute Name="Format" Informative="true">Dec_unsigned</StringAttribute>
-      </Constant>
-    </Access>
-    <Access Scope="GlobalVariable" UId="[ID_tag]">
-      <Symbol>
-        <Component Name="DB_ARG" />
-        <Component Name="VKE=0" />
-        <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="93448" Informative="true" />
-      </Symbol>
-    </Access>
-    <Access Scope="LiteralConstant" UId="[ID_tag]">
-      <Constant>
-        <ConstantType>Byte</ConstantType>
-        <ConstantValue>0</ConstantValue>
-        <StringAttribute Name="Format" Informative="true">Dec_unsigned</StringAttribute>
-      </Constant>
-    </Access>
-    <Access Scope="GlobalVariable" UId="[ID_tag]">
-      <Symbol>
-        <Component Name="DB_ARG" />
-        <Component Name="VKE=0" />
-        <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="93448" Informative="true" />
-      </Symbol>
-    </Access>
-    <Access Scope="LiteralConstant" UId="[ID_tag]">
-      <Constant>
-        <ConstantType>Byte</ConstantType>
-        <ConstantValue>0</ConstantValue>
+        <ConstantValue>[numero_folge]</ConstantValue>
         <StringAttribute Name="Format" Informative="true">Dec_unsigned</StringAttribute>
       </Constant>
     </Access>
@@ -148,7 +148,7 @@
         <IntegerAttribute Name="BlockNumber" Informative="true">203</IntegerAttribute>
         <DateAttribute Name="ParameterModifiedTS" Informative="true">2017-08-01T16:19:51</DateAttribute>
         <Instance Scope="GlobalVariable" UId="[ID_instancia]">
-          <Component Name="[nome_robo]#FB_RobFolge_8_DB" />
+          <Component Name="[nome_bloco]#FB_RobFolge_8_DB" />
           <Address Area="DB" Type="FB_RobFolge_8" BlockNumber="2087" BitOffset="0" Informative="true" />
         </Instance>
         <Parameter Name="PaFeVerk" Section="Input" Type="Bool">
@@ -343,31 +343,31 @@
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>de-DE</Culture>
-                  <Text>Bildung Folgen</Text>
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>sk-SK</Culture>
-                  <Text>Bildung Folgen</Text>
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>es-ES</Culture>
-                  <Text />
+					<Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text />
+					<Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>pt-BR</Culture>
-                  <Text />
+					<Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
             </ObjectList>
