@@ -104,47 +104,47 @@ namespace VASS06_GeraFC_Robo
             // =================================================================
 
 
-            // Bloco - Sistema do robo
+            // Bloco - Sistema do robo (FB_Rob)
             // =================================================================
 
 
-            // Bloco - Correção de ponto de solda
+            // Bloco - Correção de ponto de solda (FB_Rob_Korr)
             // =================================================================
 
 
-            // Network - Seleção de manutenção
+            // Network - Seleção de manutenção 
             // =================================================================
 
 
-            // Bloco - Fins de trabalho
+            // Bloco - Fins de trabalho (FB_Status_Glocal) Quantos precisar por FM
             // =================================================================
 
 
-            // Blocos - Status de Fins de trabalho
+            // Blocos - Status de Fins de trabalho (FB_Status_Glocal)
             // =================================================================
 
 
-            // Bloco - Interlocks
+            // Bloco - Interlocks (FB_Rob_Frg_ver)
             // =================================================================
 
 
-            // Blocos - Variaveis de saida
+            // Blocos - Variaveis de saida (FB_Rob_Frg)
             // =================================================================
 
 
-            // Blocos - Variaveis de entrada
+            // Blocos - Variaveis de entrada (FB_Rob_StellFrg)
             // =================================================================
 
 
-            // Blocos - Ferramentas
+            // Blocos - Ferramentas (Greifer - garra / Kleben - cola ...)
             // =================================================================
 
 
-            // Bloco - Medição
+            // Bloco - Medição (FB_RobMedien)
             // =================================================================
 
 
-            // Bloco - Numero de erro
+            // Bloco - Numero de erro (FB_Rob_FehlerNr)
             // =================================================================
 
 
@@ -160,7 +160,7 @@ namespace VASS06_GeraFC_Robo
             // =================================================================
 
 
-            // Bloco - Saida do robo
+            // Bloco - Saida do robo (FB_Rob_PN_E)
             // =================================================================
 
 
