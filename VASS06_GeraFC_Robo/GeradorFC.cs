@@ -106,21 +106,26 @@ namespace VASS06_GeraFC_Robo
 
             // Bloco - Sistema do robo (FB_Rob)
             // =================================================================
+            networkContent = Criar_Bloco("NW_FB_Rob_DB_Template.xml", "Sistema do Robô", 44, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter);
+            fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
+            if (data.DBInstanzenNumber < 20000) data.DBInstanzenNumber++;
 
 
             // Bloco - Correção de ponto de solda (FB_Rob_Korr)
             // =================================================================
-
+            networkContent = Criar_Bloco("NW_FB_Rob_Korr_DB_Template.xml", "Correção de ponto de solda", 7, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter);
+            fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
+            if (data.DBInstanzenNumber < 20000) data.DBInstanzenNumber++;
 
             // Network - Seleção de manutenção 
             // =================================================================
 
 
-            // Bloco - Fins de trabalho (FB_Status_Glocal) Quantos precisar por FM
+            // Bloco - Fins de trabalho (FB_Rob_FM)
             // =================================================================
 
 
-            // Blocos - Status de Fins de trabalho (FB_Status_Glocal)
+            // Blocos - Status de Fins de trabalho (FB_Status_Glocal) Quantos precisar por FM
             // =================================================================
 
 
