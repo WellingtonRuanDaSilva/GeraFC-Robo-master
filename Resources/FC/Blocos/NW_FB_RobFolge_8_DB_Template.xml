@@ -13,7 +13,7 @@
       <Symbol>
         <Component Name="[nome_robo]" />
         [linha_adicional]
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34248" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34248" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="LiteralConstant" UId="[ID_tag]">
@@ -27,7 +27,7 @@
       <Symbol>
         <Component Name="[nome_robo]" />
 		  [linha_adicional]
-		  <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34256" Informative="true" />
+		  <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34256" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="LiteralConstant" UId="[ID_tag]">
@@ -126,7 +126,7 @@
         <Component Name="[nome_robo]" />
         <Component Name="Rob" />
         <Component Name="Folge" />
-        <Address Area="None" Type="Byte" BlockNumber="100" BitOffset="3272" Informative="true" />
+        <Address Area="None" Type="Byte" BlockNumber="[numero_FC]" BitOffset="3272" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
@@ -134,7 +134,7 @@
         <Component Name="[nome_robo]" />
         <Component Name="Rob" />
         <Component Name="FrgFolge" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="3240" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="3240" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="LocalVariable" UId="[ID_tag]">

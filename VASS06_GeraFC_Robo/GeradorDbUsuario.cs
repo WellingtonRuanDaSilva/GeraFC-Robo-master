@@ -51,7 +51,7 @@ namespace VASS06_GeraFC_Robo
 
                 // Templates de Ferramentas
                 string klTemplate = ReadFileSafe(Path.Combine(resourcesPath, "KL_Template.txt")); // Kleben
-                string grTemplate = ReadFileSafe(Path.Combine(resourcesPath, "GR_Template.txt")); // Garra
+                string grTemplate = ReadFileSafe(Path.Combine(resourcesPath, "G0_Template.txt")); // Garra
                 string skTemplate = ReadFileSafe(Path.Combine(resourcesPath, "SK_Template.txt")); // Schweissen
                 string czTemplate = ReadFileSafe(Path.Combine(resourcesPath, "CZ_Template.txt")); // Durchsetzfügen (Clinch)
                 string kwTemplate = ReadFileSafe(Path.Combine(resourcesPath, "KW_Template.txt")); // Kappenwechsler

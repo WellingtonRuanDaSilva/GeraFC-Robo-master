@@ -6,56 +6,56 @@
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="E57" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34576" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34576" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="E58" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34584" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34584" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="E59" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34592" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34592" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="E60" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34600" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34600" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="E61" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34608" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34608" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="E62" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34616" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34616" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="E63" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34624" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34624" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="E64" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34632" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34632" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="LiteralConstant" UId="[ID_tag]">
@@ -71,7 +71,7 @@
         <Component Name="Rob" />
         <Component Name="E" />
         <Component Name="E57_Stell_FRG" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="456" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="456" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
@@ -80,7 +80,7 @@
         <Component Name="Rob" />
         <Component Name="E" />
         <Component Name="E58_Stell_FRG" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="464" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="464" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
@@ -89,7 +89,7 @@
         <Component Name="Rob" />
         <Component Name="E" />
         <Component Name="E59_Stell_FRG" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="472" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="472" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
@@ -98,7 +98,7 @@
         <Component Name="Rob" />
         <Component Name="E" />
         <Component Name="E60_Stell_FRG" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="480" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="480" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
@@ -107,7 +107,7 @@
         <Component Name="Rob" />
         <Component Name="E" />
         <Component Name="E61_Stell_FRG" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="488" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="488" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
@@ -116,7 +116,7 @@
         <Component Name="Rob" />
         <Component Name="E" />
         <Component Name="E62_Stell_FRG" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="496" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="496" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
@@ -125,7 +125,7 @@
         <Component Name="Rob" />
         <Component Name="E" />
         <Component Name="E63_Stell_FRG" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="504" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="504" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
@@ -134,7 +134,7 @@
         <Component Name="Rob" />
         <Component Name="E" />
         <Component Name="E64_Stell_FRG" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="512" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="512" Informative="true" />
       </Symbol>
     </Access>
     <Call UId="[ID_bloco]">
@@ -322,25 +322,25 @@
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>sk-SK</Culture>
-                  <Text>Stellungsfreigaben</Text>
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>es-ES</Culture>
-                  <Text />
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text />
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>pt-BR</Culture>
-                  <Text />
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
             </ObjectList>

@@ -20,7 +20,7 @@
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="FM" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34264" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34264" Informative="true" />
       </Symbol>
     </Access>
     <Call UId="[ID_bloco]">
@@ -104,31 +104,31 @@
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>de-DE</Culture>
-                  <Text>Status Fertigmeldung 1 Schweissen Station 110010V01-4</Text>
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>sk-SK</Culture>
-                  <Text>Status Fertigmeldung 1 Schweissen Station 110010V01-4</Text>
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>es-ES</Culture>
-                  <Text />
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text />
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>pt-BR</Culture>
-                  <Text />
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
             </ObjectList>

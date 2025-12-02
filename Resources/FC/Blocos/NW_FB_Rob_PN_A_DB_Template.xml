@@ -25,7 +25,7 @@
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="Rob" />
-        <Address Area="None" Type="ST_Rob" BlockNumber="100" BitOffset="0" Informative="true" />
+        <Address Area="None" Type="ST_Rob" BlockNumber="[numero_FC]" BitOffset="0" Informative="true" />
       </Symbol>
     </Access>
     <Call UId="[ID_bloco]">
@@ -122,25 +122,25 @@
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>sk-SK</Culture>
-                  <Text>Eingaben lesen</Text>
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>es-ES</Culture>
-                  <Text />
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text />
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>pt-BR</Culture>
-                  <Text />
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
             </ObjectList>

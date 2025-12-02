@@ -7,7 +7,7 @@
         <Component Name="[nome_robo]" />
         <Component Name="Rob" />
         <Component Name="A97_112_ProzesspunktNr" />
-        <Address Area="None" Type="Word" BlockNumber="100" BitOffset="48" Informative="true" />
+        <Address Area="None" Type="Word" BlockNumber="[numero_FC]" BitOffset="48" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
@@ -16,7 +16,7 @@
         <Component Name="Rob" />
         <Component Name="A" />
         <Component Name="A1_8_Folgespiegelung" />
-        <Address Area="None" Type="Byte" BlockNumber="100" BitOffset="1504" Informative="true" />
+        <Address Area="None" Type="Byte" BlockNumber="[numero_FC]" BitOffset="1504" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
@@ -25,7 +25,7 @@
         <Component Name="Rob" />
         <Component Name="A" />
         <Component Name="A17_in_Wartung" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="1576" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="1576" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="LiteralConstant" UId="[ID_tag]">
@@ -48,7 +48,7 @@
         <Component Name="Rob" />
         <Component Name="E" />
         <Component Name="E16_Halt_Korr" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="128" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="128" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
@@ -173,25 +173,25 @@
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>sk-SK</Culture>
-                  <Text>Roboter Halt zum Korrigieren</Text>
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>es-ES</Culture>
-                  <Text />
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text />
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>pt-BR</Culture>
-                  <Text />
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
             </ObjectList>

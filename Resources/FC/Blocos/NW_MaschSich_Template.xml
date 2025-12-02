@@ -1,0 +1,162 @@
+<SW.Blocks.CompileUnit ID="[ID_0]" CompositionName="CompileUnits">
+  <AttributeList>
+    <NetworkSource>
+      <FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+        <Parts>
+          <Access Scope="GlobalVariable" UId="[ID_1]">
+            <Symbol>
+              <Component Name="[numero_SK]" />
+              <Component Name="BA" />
+              <Component Name="K26_FrAuto" />
+            </Symbol>
+          </Access>
+          <Access Scope="GlobalVariable" UId="[ID_2]">
+            <Symbol>
+              <Component Name="[numero_SK]" />
+              <Component Name="BA" />
+              <Component Name="K25_FrHand" />
+            </Symbol>
+          </Access>
+          <Access Scope="GlobalVariable" UId="[ID_3]">
+            <Symbol>
+              <Component Name="[nome_robo]" />
+              <Component Name="Rob" />
+              <Component Name="A" />
+              <Component Name="A12_Automatik" />
+            </Symbol>
+          </Access>
+          <Access Scope="GlobalVariable" UId="[ID_4]">
+            <Symbol>
+              <Component Name="[nome_robo]" />
+              <Component Name="Rob" />
+              <Component Name="oRob" />
+            </Symbol>
+          </Access>
+          
+          <Access Scope="GlobalVariable" UId="[ID_5]">
+            <Symbol>
+              <Component Name="Info_Marcador" />
+            </Symbol>
+          </Access>
+          
+          <Access Scope="GlobalVariable" UId="[ID_6]">
+            <Symbol>
+              <Component Name="[numero_SK]" />
+              <Component Name="BA" />
+              <Component Name="K51_Kon" />
+            </Symbol>
+          </Access>
+          <Access Scope="GlobalVariable" UId="[ID_7]">
+            <Symbol>
+              <Component Name="[nome_robo]" />
+              <Component Name="Rob" />
+              <Component Name="Frg_MaschSich" />
+            </Symbol>
+          </Access>
+
+          <Part Name="Contact" UId="[ID_8]" /> <Part Name="Contact" UId="[ID_9]" /> <Part Name="O" UId="[ID_10]">        <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+          </Part>
+          <Part Name="Contact" UId="[ID_11]" /> <Part Name="Contact" UId="[ID_12]" /> <Part Name="O" UId="[ID_13]">         <TemplateValue Name="Card" Type="Cardinality">2</TemplateValue>
+          </Part>
+          <Part Name="Contact" UId="[ID_14]" /> <Part Name="Contact" UId="[ID_15]" /> <Part Name="Coil" UId="[ID_16]" />    </Parts>
+        <Wires>
+          <Wire UId="[ID_17]">
+            <Powerrail />
+            <NameCon UId="[ID_8]" Name="in" />
+            <NameCon UId="[ID_9]" Name="in" />
+          </Wire>
+          <Wire UId="[ID_18]">
+            <IdentCon UId="[ID_1]" />
+            <NameCon UId="[ID_8]" Name="operand" />
+          </Wire>
+          <Wire UId="[ID_19]">
+            <NameCon UId="[ID_8]" Name="out" />
+            <NameCon UId="[ID_10]" Name="in1" />
+          </Wire>
+          <Wire UId="[ID_20]">
+            <IdentCon UId="[ID_2]" />
+            <NameCon UId="[ID_9]" Name="operand" />
+          </Wire>
+          <Wire UId="[ID_21]">
+            <NameCon UId="[ID_9]" Name="out" />
+            <NameCon UId="[ID_10]" Name="in2" />
+          </Wire>
+          <Wire UId="[ID_22]">
+            <NameCon UId="[ID_10]" Name="out" />
+            <NameCon UId="[ID_11]" Name="in" />
+            <NameCon UId="[ID_12]" Name="in" />
+          </Wire>
+          <Wire UId="[ID_23]">
+            <IdentCon UId="[ID_3]" />
+            <NameCon UId="[ID_11]" Name="operand" />
+          </Wire>
+          <Wire UId="[ID_24]">
+            <NameCon UId="[ID_11]" Name="out" />
+            <NameCon UId="[ID_13]" Name="in1" />
+          </Wire>
+          <Wire UId="[ID_25]">
+            <IdentCon UId="[ID_4]" />
+            <NameCon UId="[ID_12]" Name="operand" />
+          </Wire>
+          <Wire UId="[ID_26]">
+            <NameCon UId="[ID_12]" Name="out" />
+            <NameCon UId="[ID_13]" Name="in2" />
+          </Wire>
+          <Wire UId="[ID_27]">
+            <NameCon UId="[ID_13]" Name="out" />
+            <NameCon UId="[ID_14]" Name="in" />
+          </Wire>
+          <Wire UId="[ID_28]">
+            <IdentCon UId="[ID_5]" />
+            <NameCon UId="[ID_14]" Name="operand" />
+          </Wire>
+          <Wire UId="[ID_29]">
+            <NameCon UId="[ID_14]" Name="out" />
+            <NameCon UId="[ID_15]" Name="in" />
+          </Wire>
+          <Wire UId="[ID_30]">
+            <IdentCon UId="[ID_6]" />
+            <NameCon UId="[ID_15]" Name="operand" />
+          </Wire>
+          <Wire UId="[ID_31]">
+            <NameCon UId="[ID_15]" Name="out" />
+            <NameCon UId="[ID_16]" Name="in" />
+          </Wire>
+          <Wire UId="[ID_32]">
+            <IdentCon UId="[ID_7]" />
+            <NameCon UId="[ID_16]" Name="operand" />
+          </Wire>
+        </Wires>
+      </FlgNet>
+    </NetworkSource>
+    <ProgrammingLanguage>LAD</ProgrammingLanguage>
+  </AttributeList>
+  <ObjectList>
+    <MultilingualText ID="[ID_33]" CompositionName="Comment">
+      <ObjectList>
+        <MultilingualTextItem ID="[ID_34]" CompositionName="Items">
+          <AttributeList>
+            <Culture>de-DE</Culture>
+            <Text />
+          </AttributeList>
+        </MultilingualTextItem>
+      </ObjectList>
+    </MultilingualText>
+    <MultilingualText ID="[ID_35]" CompositionName="Title">
+      <ObjectList>
+        <MultilingualTextItem ID="[ID_36]" CompositionName="Items">
+          <AttributeList>
+            <Culture>de-DE</Culture>
+            <Text>[titulo_network]</Text>
+          </AttributeList>
+        </MultilingualTextItem>
+        <MultilingualTextItem ID="[ID_37]" CompositionName="Items">
+          <AttributeList>
+            <Culture>pt-BR</Culture>
+            <Text>[titulo_network]</Text>
+          </AttributeList>
+        </MultilingualTextItem>
+      </ObjectList>
+    </MultilingualText>
+  </ObjectList>
+</SW.Blocks.CompileUnit>

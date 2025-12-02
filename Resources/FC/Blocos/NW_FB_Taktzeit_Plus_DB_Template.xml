@@ -12,9 +12,7 @@
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
-        <Component Name="[nome_robo]" />
-        <Component Name="E80_MS1V1" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34760" Informative="true" />
+        <Component Name="Info_Marcador" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
@@ -27,8 +25,8 @@
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
-        <Component Name="A80_PF1V1" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34568" Informative="true" />
+        <Component Name="A80" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34568" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
@@ -36,7 +34,7 @@
         <Component Name="[nome_robo]" />
         <Component Name="TZ" />
         <Component Name="Typ" />
-        <Address Area="None" Type="Int" BlockNumber="100" BitOffset="33840" Informative="true" />
+        <Address Area="None" Type="Int" BlockNumber="[numero_FC]" BitOffset="33840" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="LiteralConstant" UId="[ID_tag]">
@@ -78,7 +76,7 @@
         <Component Name="[nome_robo]" />
         <Component Name="TZ" />
         <Component Name="L_Wert" />
-        <Address Area="None" Type="Int" BlockNumber="100" BitOffset="33888" Informative="true" />
+        <Address Area="None" Type="Int" BlockNumber="[numero_FC]" BitOffset="33888" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
@@ -86,7 +84,7 @@
         <Component Name="[nome_robo]" />
         <Component Name="TZ" />
         <Component Name="FZ_Start" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="33936" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="33936" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
@@ -94,7 +92,7 @@
         <Component Name="[nome_robo]" />
         <Component Name="TZ" />
         <Component Name="Stoe" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="33944" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="33944" Informative="true" />
       </Symbol>
     </Access>
     <Call UId="[ID_bloco]">
@@ -244,7 +242,7 @@ Es wird nur die Zeit der Arbeit an der Vorrichtung gemessen.</Text>
               </MultilingualTextItem>
             </ObjectList>
           </MultilingualText>
-          <MultilingualText ID="187" CompositionName="Title">
+          <MultilingualText ID="[ID_unico]" CompositionName="Title">
             <ObjectList>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
@@ -255,25 +253,25 @@ Es wird nur die Zeit der Arbeit an der Vorrichtung gemessen.</Text>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>sk-SK</Culture>
-                  <Text>Taktzeit Roboter [nome_robo]</Text>
+                  <Text>[titulo_network] [nome_robo]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>es-ES</Culture>
-                  <Text />
+                  <Text>[titulo_network] [nome_robo]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text />
+                  <Text>[titulo_network] [nome_robo]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>pt-BR</Culture>
-                  <Text />
+                  <Text>[titulo_network] [nome_robo]</Text>
                 </AttributeList>
               </MultilingualTextItem>
             </ObjectList>

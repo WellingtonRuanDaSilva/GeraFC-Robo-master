@@ -1,4 +1,4 @@
-<SW.Blocks.CompileUnit ID="[ID_unico]" CompositionName="CompileUnits">
+﻿<SW.Blocks.CompileUnit ID="[ID_unico]" CompositionName="CompileUnits">
         <AttributeList>
           <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
   <Parts>
@@ -30,15 +30,12 @@
         <Component Name="Rob" />
         <Component Name="A" />
         <Component Name="A11_Single_Step" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="1528" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="1528" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
-        <Component Name="[nome_robo]" />
-        <Component Name="KW1" />
-        <Component Name="oProz" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34080" Informative="true" />
+        <Component Name="Info_Marcador" />
       </Symbol>
     </Access>
     <Access Scope="LiteralConstant" UId="[ID_tag]">
@@ -66,14 +63,14 @@
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="Rob" />
-        <Address Area="None" Type="ST_Rob" BlockNumber="100" BitOffset="0" Informative="true" />
+        <Address Area="None" Type="ST_Rob" BlockNumber="[numero_FC]" BitOffset="0" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="PG" />
-        <Address Area="None" Type="ST_PG" BlockNumber="100" BitOffset="16624" Informative="true" />
+        <Address Area="None" Type="ST_PG" BlockNumber="[numero_FC]" BitOffset="16624" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
@@ -88,7 +85,7 @@
         <Component Name="[nome_robo]" />
         <Component Name="SK1" />
         <Component Name="oProz" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="33960" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="33960" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
@@ -96,7 +93,7 @@
         <Component Name="[nome_robo]" />
         <Component Name="SK1" />
         <Component Name="PA" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="33984" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="33984" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="LocalVariable" UId="[ID_tag]">
@@ -110,7 +107,7 @@
         <Component Name="[nome_robo]" />
         <Component Name="SK1" />
         <Component Name="Vorw" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="33992" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="33992" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="LocalVariable" UId="[ID_tag]">
@@ -124,7 +121,7 @@
         <Component Name="[nome_robo]" />
         <Component Name="SK1" />
         <Component Name="MxStnMgn" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34016" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34016" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
@@ -132,7 +129,7 @@
         <Component Name="[nome_robo]" />
         <Component Name="SK1" />
         <Component Name="Stoe_St" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34048" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34048" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="LocalVariable" UId="[ID_tag]">
@@ -335,30 +332,30 @@
                 <AttributeList>
                   <Culture>de-DE</Culture>
                   <Text>Schweißsteuerung 1</Text>
-                </AttributeList>
+                  <Text>[titulo_network]</Text>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>sk-SK</Culture>
                   <Text>Schweißsteuerung 1</Text>
-                </AttributeList>
+                  <Text>[titulo_network]</Text>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>es-ES</Culture>
-                  <Text />
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text />
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>pt-BR</Culture>
-                  <Text />
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
             </ObjectList>

@@ -41,14 +41,14 @@
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="Rob" />
-        <Address Area="None" Type="ST_Rob" BlockNumber="101" BitOffset="0" Informative="true" />
+        <Address Area="None" Type="ST_Rob" BlockNumber="[numero_FC]" BitOffset="0" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="PG" />
-        <Address Area="None" Type="ST_PG" BlockNumber="101" BitOffset="16624" Informative="true" />
+        <Address Area="None" Type="ST_PG" BlockNumber="[numero_FC]" BitOffset="16624" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
@@ -68,7 +68,7 @@
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="nBT" />
-        <Address Area="None" Type="Bool" BlockNumber="101" BitOffset="35040" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="35040" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="LocalVariable" UId="[ID_tag]">
@@ -240,31 +240,31 @@
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>de-DE</Culture>
-                  <Text>Greifer</Text>
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>sk-SK</Culture>
-                  <Text>Greifer</Text>
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>es-ES</Culture>
-                  <Text />
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text />
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>pt-BR</Culture>
-                  <Text />
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
             </ObjectList>

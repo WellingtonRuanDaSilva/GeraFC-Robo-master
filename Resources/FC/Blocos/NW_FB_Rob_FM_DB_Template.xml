@@ -4,18 +4,12 @@
   <Parts>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
-        <Component Name="[nome_robo]" />
-        <Component Name="Rob" />
-        <Component Name="oRob" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="3320" Informative="true" />
+        <Component Name="Info_Marcador" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
-        <Component Name="[nome_robo]" />
-        <Component Name="Rob" />
-        <Component Name="oRob" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="3320" Informative="true" />
+        <Component Name="Info_Marcador" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
@@ -23,112 +17,112 @@
         <Component Name="[nome_robo]" />
         <Component Name="Rob" />
         <Component Name="A33_36_FM" />
-        <Address Area="None" Type="Byte" BlockNumber="100" BitOffset="16616" Informative="true" />
+        <Address Area="None" Type="Byte" BlockNumber="[numero_FC]" BitOffset="16616" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="FM1" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34264" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34264" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="FM2" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34272" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34272" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="FM3" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34280" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34280" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="FM4" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34288" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34288" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="FM5" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34296" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34296" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="FM6" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34304" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34304" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="FM7" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34312" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34312" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="FM8" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34320" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34320" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="FM9" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34328" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34328" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="FM10" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34336" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34336" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="FM11" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34344" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34344" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="FM12" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34352" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34352" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="FM13" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34360" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34360" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="FM14" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34368" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34368" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="FM" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="34376" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34376" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
@@ -136,7 +130,7 @@
         <Component Name="[nome_robo]" />
         <Component Name="Rob" />
         <Component Name="E33_36_Quit_FM" />
-        <Address Area="None" Type="Byte" BlockNumber="100" BitOffset="16608" Informative="true" />
+        <Address Area="None" Type="Byte" BlockNumber="[numero_FC]" BitOffset="16608" Informative="true" />
       </Symbol>
     </Access>
     <Call UId="[ID_bloco]">
@@ -338,25 +332,25 @@
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>sk-SK</Culture>
-                  <Text>Roboterfertigmeldungen</Text>
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>es-ES</Culture>
-                  <Text />
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text />
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>pt-BR</Culture>
-                  <Text />
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
             </ObjectList>

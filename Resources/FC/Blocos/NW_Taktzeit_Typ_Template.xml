@@ -1,0 +1,121 @@
+<SW.Blocks.CompileUnit ID="[ID_0]" CompositionName="CompileUnits">
+  <AttributeList>
+    <NetworkSource>
+      <FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+        <Parts>
+          <Access Scope="GlobalVariable" UId="[ID_1]">
+            <Symbol>
+              <Component Name="DB_ARG" />
+              <Component Name="VKE=1" />
+            </Symbol>
+          </Access>
+          <Access Scope="GlobalVariable" UId="[ID_2]">
+            <Symbol>
+              <Component Name="[nome_robo]" />
+              <Component Name="Rob" />
+              <Component Name="InFolge" AccessModifier="Array">
+                <Access Scope="LiteralConstant">
+                  <Constant>
+                    <ConstantType>DInt</ConstantType>
+                    <ConstantValue>[numero_folge]</ConstantValue>
+                    <StringAttribute Name="Format" Informative="true">Dec_signed</StringAttribute>
+                  </Constant>
+                </Access>
+              </Component>
+            </Symbol>
+          </Access>
+          <Access Scope="TypedConstant" UId="[ID_3]">
+            <Constant>
+              <ConstantValue>T#1M</ConstantValue>
+              <StringAttribute Name="Format" Informative="true">Time</StringAttribute>
+              <StringAttribute Name="FormatFlags" Informative="true">TypeQualifier</StringAttribute>
+            </Constant>
+          </Access>
+          <Access Scope="TypedConstant" UId="[ID_4]">
+            <Constant>
+              <ConstantValue>T#1M</ConstantValue>
+              <StringAttribute Name="Format" Informative="true">Time</StringAttribute>
+              <StringAttribute Name="FormatFlags" Informative="true">TypeQualifier</StringAttribute>
+            </Constant>
+          </Access>
+          <Access Scope="GlobalVariable" UId="[ID_5]">
+            <Symbol>
+              <Component Name="[nome_robo]" />
+              <Component Name="Rob" />
+              <Component Name="A" />
+              <Component Name="A97_112_ProzesspunktNr" />
+            </Symbol>
+          </Access>
+          
+          <Call UId="[ID_6]">
+            <CallInfo Name="FB_Taktzeit_Plus" BlockType="FB">
+              <Instance Scope="GlobalVariable" UId="[ID_7]">
+                <Component Name="[nome_robo]_TZ_F[numero_folge]#FB_Taktzeit_Plus_DB" />
+                <Address Area="DB" Type="FB_Taktzeit_Plus" BlockNumber="[numero_DB_Instanzen]" BitOffset="0" Informative="true" />
+              </Instance>
+              <Parameter Name="T_Soll" Section="Input" Type="Time" />
+              <Parameter Name="T_Soll_Max" Section="Input" Type="Time" />
+              <Parameter Name="Rob_T_Akt" Section="InOut" Type="Byte" />
+            </CallInfo>
+          </Call>
+
+          <Part Name="Contact" UId="[ID_8]" />
+          <Part Name="Contact" UId="[ID_9]" />
+        </Parts>
+        <Wires>
+          <Wire UId="[ID_10]">
+            <Powerrail />
+            <NameCon UId="[ID_8]" Name="in" />
+          </Wire>
+          <Wire UId="[ID_11]">
+            <IdentCon UId="[ID_1]" />
+            <NameCon UId="[ID_8]" Name="operand" />
+          </Wire>
+          <Wire UId="[ID_12]">
+            <NameCon UId="[ID_8]" Name="out" />
+            <NameCon UId="[ID_9]" Name="in" />
+          </Wire>
+          <Wire UId="[ID_13]">
+            <IdentCon UId="[ID_2]" />
+            <NameCon UId="[ID_9]" Name="operand" />
+          </Wire>
+          <Wire UId="[ID_14]">
+            <NameCon UId="[ID_9]" Name="out" />
+            <NameCon UId="[ID_6]" Name="en" />
+          </Wire>
+          <Wire UId="[ID_15]">
+            <IdentCon UId="[ID_3]" />
+            <NameCon UId="[ID_6]" Name="T_Soll" />
+          </Wire>
+          <Wire UId="[ID_16]">
+            <IdentCon UId="[ID_4]" />
+            <NameCon UId="[ID_6]" Name="T_Soll_Max" />
+          </Wire>
+          <Wire UId="[ID_17]">
+            <IdentCon UId="[ID_5]" />
+            <NameCon UId="[ID_6]" Name="Rob_T_Akt" />
+          </Wire>
+        </Wires>
+      </FlgNet>
+    </NetworkSource>
+    <ProgrammingLanguage>LAD</ProgrammingLanguage>
+  </AttributeList>
+  <ObjectList>
+    <MultilingualText ID="[ID_18]" CompositionName="Title">
+      <ObjectList>
+        <MultilingualTextItem ID="[ID_19]" CompositionName="Items">
+          <AttributeList>
+            <Culture>de-DE</Culture>
+            <Text>Taktzeit_Plus Typ [numero_folge]</Text>
+          </AttributeList>
+        </MultilingualTextItem>
+        <MultilingualTextItem ID="[ID_20]" CompositionName="Items">
+          <AttributeList>
+            <Culture>pt-BR</Culture>
+            <Text>Tipo Taktzeit_Plus [numero_folge]</Text>
+          </AttributeList>
+        </MultilingualTextItem>
+      </ObjectList>
+    </MultilingualText>
+  </ObjectList>
+</SW.Blocks.CompileUnit>

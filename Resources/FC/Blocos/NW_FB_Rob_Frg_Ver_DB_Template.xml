@@ -17,7 +17,7 @@
         <Component Name="Rob" />
         <Component Name="A" />
         <Component Name="A16_SAK" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="1568" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="1568" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
@@ -25,7 +25,7 @@
         <Component Name="[nome_robo]" />
         <Component Name="Rob" />
         <Component Name="oRob" />
-        <Address Area="None" Type="Bool" BlockNumber="100" BitOffset="3320" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="3320" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="LiteralConstant" UId="[ID_tag]">
@@ -145,7 +145,7 @@
         <Component Name="[nome_robo]" />
         <Component Name="Rob" />
         <Component Name="A81_96_Anfo_RobVerr" />
-        <Address Area="None" Type="Word" BlockNumber="100" BitOffset="32" Informative="true" />
+        <Address Area="None" Type="Word" BlockNumber="[numero_FC]" BitOffset="32" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
@@ -153,7 +153,7 @@
         <Component Name="[nome_robo]" />
         <Component Name="Rob" />
         <Component Name="A41_56_Roboter_FRG" />
-        <Address Area="None" Type="Word" BlockNumber="100" BitOffset="16" Informative="true" />
+        <Address Area="None" Type="Word" BlockNumber="[numero_FC]" BitOffset="16" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="LiteralConstant" UId="[ID_tag]">
@@ -174,7 +174,7 @@
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="Rob" />
-        <Address Area="None" Type="ST_Rob" BlockNumber="100" BitOffset="0" Informative="true" />
+        <Address Area="None" Type="ST_Rob" BlockNumber="[numero_FC]" BitOffset="0" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
@@ -184,13 +184,13 @@
         <Address Area="None" Type="ST_RobVer_Struct" BlockNumber="150" BitOffset="11728" Informative="true" />
       </Symbol>
     </Access>
-    <Access Scope="GlobalVariable" UId="[ID_tag]">
+    <Access Scope="LocalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="Temp" />
         <Component Name="_Bool" />
       </Symbol>
     </Access>
-    <Access Scope="GlobalVariable" UId="[ID_tag]">
+    <Access Scope="LocalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="Temp" />
         <Component Name="_Bool" />
@@ -285,7 +285,7 @@
         <Component Name="[nome_robo]" />
         <Component Name="Rob" />
         <Component Name="E81_96_Quit_RobVerr" />
-        <Address Area="None" Type="Word" BlockNumber="100" BitOffset="0" Informative="true" />
+        <Address Area="None" Type="Word" BlockNumber="[numero_FC]" BitOffset="0" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="LocalVariable" UId="[ID_tag]">
@@ -661,25 +661,25 @@
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>sk-SK</Culture>
-                  <Text>Roboterverriegelungen</Text>
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>es-ES</Culture>
-                  <Text />
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text />
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>pt-BR</Culture>
-                  <Text />
+                  <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
             </ObjectList>

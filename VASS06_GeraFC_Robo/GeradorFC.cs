@@ -39,7 +39,8 @@ namespace VASS06_GeraFC_Robo
 
             // Bloco - Status da Entradas
             // =================================================================
-            networkContent = Criar_Bloco("NW_FB_Rob_PN_A_DB_Template.xml", "Status Entradas", 4, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter, numero_SK: data.SKNumber);
+            // Adicionado o parâmetro fcNumber: data.FCNumber.ToString()
+            networkContent = Criar_Bloco("NW_FB_Rob_PN_A_DB_Template.xml", "Leer entradas", 4, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter, numero_SK: data.SKNumber, fcNumber: data.FCNumber.ToString());
             fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
 
             // NETWORK: Liberação de Folge
@@ -49,7 +50,7 @@ namespace VASS06_GeraFC_Robo
                 string numeroFolges = data.DgvFolges.Rows[i].Cells[0].Value.ToString().Trim();
                 if (!string.IsNullOrEmpty(numeroFolges))
                 {
-                    networkContent = Criar_Network($"Freigabe Folge {numeroFolges}", new[] { "Info_Marcador" }, new[] { "NA" }, $"{RobName}.FrgFolg{data.DgvFolges.Rows[i].Cells[0].Value}", "Coil", ref idCounter);
+                    networkContent = Criar_Network($"Liberación Folge {numeroFolges}", new[] { "Info_Marcador" }, new[] { "NA" }, $"{RobName}.FrgFolg{data.DgvFolges.Rows[i].Cells[0].Value}", "Coil", ref idCounter);
                     fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
                 }
             }
@@ -70,96 +71,197 @@ namespace VASS06_GeraFC_Robo
             }
 
             string[] resultadoFolges = linhas.ToArray();
-            networkContent = Criar_RobFolge("NW_FB_RobFolge_8_DB_Template.xml", "Bildung Folgen", 20, RobName, "1500", data.DBAnwenderNumber.ToString(), resultadoFolges, ref idCounter);
+            networkContent = Criar_RobFolge("NW_FB_RobFolge_8_DB_Template.xml", "Construcción de Folgen", 20, RobName, "1500", data.DBAnwenderNumber.ToString(), resultadoFolges, ref idCounter, fcNumber: data.FCNumber.ToString());
             fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
 
 
-            // Network - Typinfo
+            // Bloco - Typinfo (BIT_TO_BYTE)
             // =================================================================
-            networkContent = Criar_Network("Typ and Roboter", new[] { "Info_Marcador" }, new[] { "NA" }, $"E233_240_Typinfo_SPS", "coil", ref idCounter);
+            networkContent = Criar_Network_Personalizada(
+                "NW_BIT_TO_BYTE_Template.xml",
+                "Typ an Roboter",
+                RobName,
+                data.SKNumber,
+                ref idCounter
+            );
             fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
 
-            // Network - Typinfo
+            // Network - Liberação de Folge
             // =================================================================
-            networkContent = Criar_Network("Typ and Roboter", new[] { "Info_Marcador" }, new[] { "NA" }, $"E233_240_Typinfo_SPS", "coil", ref idCounter);
+            networkContent = Criar_Network("Liberação de Folge",
+                                           new[] { "Info_Marcador", $"{RobName}.Rob.FrgFolge" },
+                                           new[] { "NF", "NA" },
+                                           $"{RobName}.FrgFolg",
+                                           "Coil",
+                                           ref idCounter);
             fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
+
 
             // Network - Folge Start
             // =================================================================
+            List<string> contactsList = new List<string>();
+            List<string> typesList = new List<string>();
+
+            // 1. Primeiro contato: FrgFolg (NA)
+            contactsList.Add($"{RobName}.FrgFolg");
+            typesList.Add("NA");
+
+            // 2. Loop para adicionar contato Fechado (NF) para cada FM da planilha
+            foreach (DataGridViewRow row in data.DgvFMs.Rows)
+            {
+                if (row.IsNewRow) continue;
+                string fmNum = row.Cells[0].Value?.ToString()?.Trim();
+                // Verifica se existe número de FM definido
+                if (!string.IsNullOrEmpty(fmNum))
+                {
+                    contactsList.Add($"{RobName}.FM{fmNum}");
+                    typesList.Add("NF");
+                }
+            }
+
+            // 3. Contato Fechado (NF) para o FM Geral
+            contactsList.Add($"{RobName}.FM");
+            typesList.Add("NF");
+
+            // 4. Criação da Network acionando a bobina Rob.FolgeStart
+            networkContent = Criar_Network("Inicio del Folge",
+                                           contactsList.ToArray(),
+                                           typesList.ToArray(),
+                                           $"{RobName}.Rob.FolgeStart",
+                                           "Coil",
+                                           ref idCounter);
+
+            fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
 
 
             // Network - Start de folge de manutenção
             // =================================================================
+            networkContent = Criar_Network("Inicio del mantenimiento Folge",
+                                           new[] { $"{RobName}.Rob.WartAng", $"{RobName}.Rob.A.A15_PF0", "Info_Marcador" },
+                                           new[] { "NA", "NA", "NA" },
+                                           $"{RobName}.Rob.W_FolgeStart",
+                                           "Coil",
+                                           ref idCounter);
+            fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
+
 
 
             // Network - Segurança de maquina auxiliar
             // =================================================================
+            // Utiliza o template NW_MaschSich_Aux_Template.xml
+            networkContent = Criar_Network_Personalizada(
+                "NW_MaschSich_Aux_Template.xml",
+                "Seguridad de la máquina de liberación aux",
+                RobName,
+                data.SKNumber,
+                ref idCounter
+            );
+            fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
 
 
             // Network - Segurança de maquina
             // =================================================================
+            networkContent = Criar_Network_Personalizada(
+                "NW_MaschSich_Template.xml",
+                "Seguridad de la máquina de liberación",
+                RobName,
+                data.SKNumber, // Passa o número SK para as tags globais K26, K25, etc.
+                ref idCounter
+            );
+            fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
 
 
             // Network - Ponte de Consistency check
             // =================================================================
+            networkContent = Criar_Network("Comprobación de coherencia",
+                                           new[] { "DB_ARG.VKE=1" },
+                                           new[] { "NA" },
+                                           $"{RobName}.Rob.UebFKonsi",
+                                           "Coil",
+                                           ref idCounter);
+            fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
 
 
             // Bloco - Sistema do robo (FB_Rob)
             // =================================================================
-            networkContent = Criar_Bloco("NW_FB_Rob_DB_Template.xml", "Sistema do Robô", 44, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter);
+            networkContent = Criar_Bloco("NW_FB_Rob_DB_Template.xml", "Interfaz del sistema robótico", 44, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter, fcNumber: data.FCNumber.ToString());
             fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
             if (data.DBInstanzenNumber < 20000) data.DBInstanzenNumber++;
 
 
             // Bloco - Correção de ponto de solda (FB_Rob_Korr)
             // =================================================================
-            networkContent = Criar_Bloco("NW_FB_Rob_Korr_DB_Template.xml", "Correção de ponto de solda", 7, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter);
+            networkContent = Criar_Bloco("NW_FB_Rob_Korr_DB_Template.xml", "El robot se detiene para corregir", 7, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter, fcNumber: data.FCNumber.ToString());
             fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
             if (data.DBInstanzenNumber < 20000) data.DBInstanzenNumber++;
 
             // Network - Seleção de manutenção 
             // =================================================================
+            networkContent = Criar_Network("Selección de mantenimiento",
+                                           new[] { $"{RobName}.Rob.WartExAng", "Info_Marcador" },
+                                           new[] { "NA", "NA" },
+                                           $"{RobName}.Rob.E.E18_Halt_WartBer",
+                                           "Coil",
+                                           ref idCounter);
+            fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
 
 
             // Bloco - Fins de trabalho (FB_Rob_FM)
             // =================================================================
-            networkContent = Criar_Bloco("NW_FB_Rob_FM_DB_Template.xml", "Fins de trabalho", 19, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter);
+            networkContent = Criar_Bloco("NW_FB_Rob_FM_DB_Template.xml", "Mensaje de fin de trabajo del robot", 19, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter, fcNumber: data.FCNumber.ToString());
             fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
             if (data.DBInstanzenNumber < 20000) data.DBInstanzenNumber++;
 
 
-            // Blocos - Status de Fins de trabalho (FB_Status_Glocal) Crair quantos blocos precisar por FM que consta na planilha modelo
+            // Blocos - Status de Fins de trabalho (FB_Status_Glocal)
+            // Cria um bloco para cada FM na planilha e um bloco final para o FM Geral
             // =================================================================
+
+            // 1. Loop para criar blocos individuais (FM1, FM2, etc.)
             foreach (DataGridViewRow row in data.DgvFMs.Rows)
             {
                 if (row.IsNewRow) continue;
-                string fmNumber = row.Cells[0].Value?.ToString().Trim();
-                string fmDesc = row.Cells[1].Value?.ToString().Trim();
+                string fmNumber = row.Cells[0].Value?.ToString()?.Trim();
+                string fmDesc = row.Cells[1].Value?.ToString()?.Trim();
 
                 if (!string.IsNullOrEmpty(fmNumber))
                 {
-                    string title = $"Status Fertigmeldung {fmNumber} {fmDesc}";
+                    string title = $"Fin del trabajo {fmNumber} {fmDesc}";
 
                     // Gera o bloco base
-                    networkContent = Criar_Bloco("NW_FB_Status_Global_DB_Template.xml", title, 3, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter);
+                    networkContent = Criar_Bloco("NW_FB_Status_Global_DB_Template.xml", title, 3, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter, fcNumber: data.FCNumber.ToString());
 
-                    // Realiza as substituições específicas para tornar o bloco exclusivo para este FM
-                    // 1. Altera a variável monitorada de "FM" (genérico) para "FMx" (específico, ex: FM1, FM2)
+                    // Substitui a variável "FM" genérica pela específica (ex: FM1)
                     networkContent = networkContent.Replace("<Component Name=\"FM\" />", $"<Component Name=\"FM{fmNumber}\" />");
 
-                    // 2. Altera o nome da instância de DB para garantir unicidade (de _FM1 para _FMx)
+                    // Substitui o nome da instância "_FM1" pela específica (ex: _FM1, _FM2)
                     networkContent = networkContent.Replace("_FM1#FB_Status_Global_DB", $"_FM{fmNumber}#FB_Status_Global_DB");
 
                     fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
 
-                    // Incrementa o DB de instância para o próximo bloco
+                    // Incrementa o DB de instância
                     if (data.DBInstanzenNumber < 20000) data.DBInstanzenNumber++;
                 }
             }
 
+            // 2. Status Global (FM Geral sem numeração)
+            {
+                string title = "Fin del trabajo general";
+                networkContent = Criar_Bloco("NW_FB_Status_Global_DB_Template.xml", title, 3, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter, fcNumber: data.FCNumber.ToString());
+
+                // A variável no template já é "FM", então não precisamos alterar o Component Name.
+                // Ajustamos apenas o nome da instância de "_FM1" para "_FM" (sem número) para evitar conflito e indicar Geral
+                networkContent = networkContent.Replace("_FM1#FB_Status_Global_DB", "_FM#FB_Status_Global_DB");
+
+                fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
+
+                // Incrementa o DB de instância para este bloco extra
+                if (data.DBInstanzenNumber < 20000) data.DBInstanzenNumber++;
+            }
+
             // Bloco - Interlocks (FB_Rob_Frg_ver)
             // =================================================================
-            networkContent = Criar_Bloco("NW_FB_Rob_Frg_Ver_DB_Template.xml", "Roboterverriegelungen", 43, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter);
+            networkContent = Criar_Bloco("NW_FB_Rob_Frg_Ver_DB_Template.xml", "Enclavamiento de robots", 43, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter, fcNumber: data.FCNumber.ToString());
             fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
             if (data.DBInstanzenNumber < 20000) data.DBInstanzenNumber++;
 
@@ -167,34 +269,55 @@ namespace VASS06_GeraFC_Robo
             // Blocos - Variaveis de saida (FB_Rob_Frg) Criar tres usando oss 3 templates Frg1 Frg2 e Frg3
             // =================================================================
             // Frg1
-            networkContent = Criar_Bloco("NW_Frg1_FB_Rob_Frg_DB_Template.xml", "Werkzeugfreigaben an Anlage", 13, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter);
+            networkContent = Criar_Bloco("NW_Frg1_FB_Rob_Frg_DB_Template.xml", "Perfiles/Posiciones Gratuitas", 13, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter, fcNumber: data.FCNumber.ToString());
             fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
             if (data.DBInstanzenNumber < 20000) data.DBInstanzenNumber++;
 
             // Frg2
-            networkContent = Criar_Bloco("NW_Frg2_FB_Rob_Frg_DB_Template.xml", "Werkzeugfreigaben an Anlage", 13, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter);
+            networkContent = Criar_Bloco("NW_Frg2_FB_Rob_Frg_DB_Template.xml", "Perfiles/Posiciones Gratuitas", 13, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter, fcNumber: data.FCNumber.ToString());
             fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
             if (data.DBInstanzenNumber < 20000) data.DBInstanzenNumber++;
 
             // Frg3
-            networkContent = Criar_Bloco("NW_Frg3_FB_Rob_Frg_DB_Template.xml", "Werkzeugfreigaben an Anlage", 13, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter);
+            networkContent = Criar_Bloco("NW_Frg3_FB_Rob_Frg_DB_Template.xml", "Perfiles/Posiciones Gratuitas", 13, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter, fcNumber: data.FCNumber.ToString());
             fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
             if (data.DBInstanzenNumber < 20000) data.DBInstanzenNumber++;
+
+            // Network - Liberação
+            // =================================================================
+            networkContent = Criar_Network("Liberación",
+                                           new[] { "Info_Marcador" },
+                                           new[] { "NA" },
+                                           $"{RobName}.E80",
+                                           "Coil",
+                                           ref idCounter);
+            fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
+
+            // Network - Livre/Ocupada
+            // =================================================================
+            networkContent = Criar_Network("Libre/Ocupado",
+                                           new[] { "Info_Marcador" },
+                                           new[] { "NA" },
+                                           $"{RobName}.E57_KTV1",
+                                           "Coil",
+                                           ref idCounter);
+            fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
+
 
             // Blocos - Variaveis de entrada (FB_Rob_StellFrg) Criar tres usando os 3 templates StellFrg1 StellFrg2 e StellFrg3
             // =================================================================
             // StellFrg1
-            networkContent = Criar_Bloco("NW_StellFrg1_FB_Rob_StellFrg_DB_Template.xml", "Stellungsfreigaben", 17, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter);
+            networkContent = Criar_Bloco("NW_StellFrg1_FB_Rob_StellFrg_DB_Template.xml", "Comunicados de posición", 17, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter, fcNumber: data.FCNumber.ToString());
             fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
             if (data.DBInstanzenNumber < 20000) data.DBInstanzenNumber++;
 
             // StellFrg2
-            networkContent = Criar_Bloco("NW_StellFrg2_FB_Rob_StellFrg_DB_Template.xml", "Stellungsfreigaben", 17, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter);
+            networkContent = Criar_Bloco("NW_StellFrg2_FB_Rob_StellFrg_DB_Template.xml", "Comunicados de posición", 17, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter, fcNumber: data.FCNumber.ToString());
             fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
             if (data.DBInstanzenNumber < 20000) data.DBInstanzenNumber++;
 
             // StellFrg3
-            networkContent = Criar_Bloco("NW_StellFrg3_FB_Rob_StellFrg_DB_Template.xml", "Stellungsfreigaben", 17, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter);
+            networkContent = Criar_Bloco("NW_StellFrg3_FB_Rob_StellFrg_DB_Template.xml", "Comunicados de posición", 17, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter, fcNumber: data.FCNumber.ToString());
             fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
             if (data.DBInstanzenNumber < 20000) data.DBInstanzenNumber++;
 
@@ -270,7 +393,7 @@ namespace VASS06_GeraFC_Robo
                 // Geração do Bloco
                 if (!string.IsNullOrEmpty(template))
                 {
-                    networkContent = Criar_Bloco(template, title, tags, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter);
+                    networkContent = Criar_Bloco(template, title, tags, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter, fcNumber: data.FCNumber.ToString());
 
                     // Substitui a referência específica da ferramenta no template pelo nome da instância atual
                     // Ex: Substitui todas as ocorrências de KL1 por KL2, ou G01 por G02
@@ -285,33 +408,79 @@ namespace VASS06_GeraFC_Robo
 
             // Bloco - Medição (FB_RobMedien)
             // =================================================================
-            networkContent = Criar_Bloco("NW_FB_RobMedien_DB_Template.xml", "Medien", 15, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter);
+            networkContent = Criar_Bloco("NW_FB_RobMedien_DB_Template.xml", "Utilidades", 15, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter, fcNumber: data.FCNumber.ToString());
             fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
             if (data.DBInstanzenNumber < 20000) data.DBInstanzenNumber++;
 
 
             // Bloco - Numero de erro (FB_Rob_FehlerNr)
             // =================================================================
-            networkContent = Criar_Bloco("NW_FB_Rob_FehlerNr_DB_Template.xml", "Roboterfehlernummer", 16, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter);
+            networkContent = Criar_Bloco("NW_FB_Rob_FehlerNr_DB_Template.xml", "Número de falla del robot", 16, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter, fcNumber: data.FCNumber.ToString());
             fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
             if (data.DBInstanzenNumber < 20000) data.DBInstanzenNumber++;
 
 
             // Network - Tempo de ciclo por tipo
             // =================================================================
+            foreach (DataGridViewRow row in data.DgvFolges.Rows)
+            {
+                if (row.IsNewRow) continue;
+                string folgeNum = row.Cells[0].Value?.ToString()?.Trim();
+
+                // Gera uma network para cada Folge encontrada
+                if (!string.IsNullOrEmpty(folgeNum))
+                {
+                    string templateFile = "NW_Taktzeit_Typ_Template.xml";
+                    string templatePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources/FC/Blocos", templateFile);
+
+                    if (File.Exists(templatePath))
+                    {
+                        string content = File.ReadAllText(templatePath);
+
+                        // 1. Substituições das variáveis principais
+                        content = content.Replace("[nome_robo]", RobName)
+                                         .Replace("[numero_folge]", folgeNum)
+                                         .Replace("[numero_DB_Instanzen]", data.DBInstanzenNumber.ToString());
+
+                        // 2. Substituição inteligente de IDs [ID_x] para garantir unicidade
+                        System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(@"\[ID_\d+\]");
+                        System.Text.RegularExpressions.MatchCollection matches = regex.Matches(content);
+                        Dictionary<string, string> idMap = new Dictionary<string, string>();
+
+                        foreach (System.Text.RegularExpressions.Match match in matches)
+                        {
+                            if (!idMap.ContainsKey(match.Value))
+                            {
+                                idMap[match.Value] = (idCounter++).ToString();
+                            }
+                        }
+                        // Aplica os novos IDs no conteúdo
+                        foreach (var pair in idMap)
+                        {
+                            content = content.Replace(pair.Key, pair.Value);
+                        }
+
+                        // 3. Adiciona a network ao arquivo final
+                        fcContent = fcContent.Replace("[proxima_network]", content + Environment.NewLine + "[proxima_network]");
+
+                        // 4. Incrementa o DB de Instância, pois cada bloco usa um DB próprio
+                        if (data.DBInstanzenNumber < 20000) data.DBInstanzenNumber++;
+                    }
+                }
+            }
 
 
-            // Network - Tempo de ciclo
+            // Bloco - Tempo de ciclo (FB_Taktzeit_Plus)
             // =================================================================
+            networkContent = Criar_Bloco("NW_FB_Taktzeit_Plus_DB_Template.xml", "Tiempo de ciclo del robot", 13, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter, fcNumber: data.FCNumber.ToString());
+            fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
+            if (data.DBInstanzenNumber < 20000) data.DBInstanzenNumber++;
 
-
-            // Network - Tempo de ciclo
-            // =================================================================
 
 
             // Bloco - Saida do robo (FB_Rob_PN_E)
             // =================================================================
-            networkContent = Criar_Bloco("NW_FB_Rob_PN_E_DB_Template.xml", "Ausgaben schreiben", 3, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter);
+            networkContent = Criar_Bloco("NW_FB_Rob_PN_E_DB_Template.xml", "Escribir salida", 3, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter, fcNumber: data.FCNumber.ToString());
             fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
             if (data.DBInstanzenNumber < 20000) data.DBInstanzenNumber++;
 
@@ -465,7 +634,7 @@ namespace VASS06_GeraFC_Robo
         }
 
 
-        private static string Criar_Bloco(string template, string title, int tagAmount, string RobName, string dbInstanzenNumber, string dbAnwenderNumber, ref int idCounter, string numero_SK = "")
+        private static string Criar_Bloco(string template, string title, int tagAmount, string RobName, string dbInstanzenNumber, string dbAnwenderNumber, ref int idCounter, string numero_SK = "", string fcNumber = "")
         {
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
             string NWFBTemplatePath = File.ReadAllText(Path.Combine(basePath, "Resources/FC/Blocos", template));
@@ -475,6 +644,12 @@ namespace VASS06_GeraFC_Robo
                                                     .Replace("[numero_DB_Instanzen]", dbInstanzenNumber);
 
             networkContent = networkContent.Replace("[nome_robo]", RobName);
+
+            // Substituição da variável [numero_FC] se ela for passada e existir no template
+            if (!string.IsNullOrEmpty(fcNumber))
+            {
+                networkContent = networkContent.Replace("[numero_FC]", fcNumber);
+            }
 
             string[] tagsIDs = new string[tagAmount];
             for (int i = 0; i < tagsIDs.Length; i++)
@@ -497,7 +672,47 @@ namespace VASS06_GeraFC_Robo
             return networkContent;
         }
 
-        private static string Criar_RobFolge(string template, string title, int tagAmount, string robName, string dbInstanzenNumber, string dbAnwenderNumber, string[] folges, ref int idCounter)
+        private static string Criar_Network_Personalizada(string templateFile, string title, string robName, string skNumber, ref int idCounter)
+        {
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+            string templatePath = Path.Combine(basePath, "Resources/FC/Blocos", templateFile);
+
+            if (!File.Exists(templatePath))
+                return "";
+
+            string content = File.ReadAllText(templatePath);
+
+            // Substituições de variáveis básicas
+            content = content.Replace("[titulo_network]", title)
+                             .Replace("[nome_robo]", robName)
+                             .Replace("[numero_SK]", skNumber);
+
+            // Substituição inteligente de IDs [ID_x]
+            // Encontra todos os placeholders no formato [ID_0], [ID_1], etc.
+            System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(@"\[ID_\d+\]");
+            System.Text.RegularExpressions.MatchCollection matches = regex.Matches(content);
+
+            // Dicionário para mapear [ID_X] -> ID sequencial único
+            Dictionary<string, string> idMap = new Dictionary<string, string>();
+
+            foreach (System.Text.RegularExpressions.Match match in matches)
+            {
+                if (!idMap.ContainsKey(match.Value))
+                {
+                    idMap[match.Value] = (idCounter++).ToString();
+                }
+            }
+
+            // Aplica as substituições dos IDs
+            foreach (var pair in idMap)
+            {
+                content = content.Replace(pair.Key, pair.Value);
+            }
+
+            return content;
+        }
+
+        private static string Criar_RobFolge(string template, string title, int tagAmount, string robName, string dbInstanzenNumber, string dbAnwenderNumber, string[] folges, ref int idCounter, string fcNumber = "")
         {
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
             string NWFBTemplatePath = File.ReadAllText(Path.Combine(basePath, "Resources/FC/Blocos", template));
@@ -507,9 +722,14 @@ namespace VASS06_GeraFC_Robo
                                                     .Replace("[numero_DB_Anwender]", dbAnwenderNumber)
                                                     .Replace("[numero_DB_Instanzen]", dbInstanzenNumber);
 
-            if (folges[0] != "")
+            // Nova lógica para substituir [numero_FC]
+            if (!string.IsNullOrEmpty(fcNumber))
             {
+                networkContent = networkContent.Replace("[numero_FC]", fcNumber);
+            }
 
+            if (folges.Length > 0 && folges[0] != "")
+            {
                 foreach (string number in folges)
                 {
                     networkContent = Utils.ReplaceFirst(networkContent, "[nome_robo]", robName);
@@ -518,6 +738,16 @@ namespace VASS06_GeraFC_Robo
                     entradasRestantes--;
                 }
                 for (int i = 0; i < entradasRestantes; i++)
+                {
+                    networkContent = Utils.ReplaceFirst(networkContent, "[nome_robo]", "DB_ARG");
+                    networkContent = Utils.ReplaceFirst(networkContent, "[numero_folge]", "0");
+                    networkContent = Utils.ReplaceFirst(networkContent, "[linha_adicional]", "<Component Name=\"VKE=0\" />");
+                }
+            }
+            else
+            {
+                // Caso a lista de folges esteja vazia, preencher tudo com VKE=0 ou lógica padrão
+                for (int i = 0; i < 8; i++)
                 {
                     networkContent = Utils.ReplaceFirst(networkContent, "[nome_robo]", "DB_ARG");
                     networkContent = Utils.ReplaceFirst(networkContent, "[numero_folge]", "0");
@@ -539,7 +769,7 @@ namespace VASS06_GeraFC_Robo
 
             networkContent = networkContent.Replace("[ID_bloco]", (idCounter++).ToString())
                                            .Replace("[ID_instancia]", (idCounter++).ToString())
-                                           .Replace("[nome_bloco]", robName )
+                                           .Replace("[nome_bloco]", robName)
                                            .Replace("[nome_robo]", robName)
                                            .Replace("[titulo_network]", title);
 
