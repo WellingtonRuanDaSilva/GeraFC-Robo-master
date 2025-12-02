@@ -51,6 +51,7 @@ namespace VASS06_GeraFC_Robo
 
                 // Templates de Ferramentas
                 string klTemplate = ReadFileSafe(Path.Combine(resourcesPath, "KL_Template.txt")); // Kleben
+                string grTemplate = ReadFileSafe(Path.Combine(resourcesPath, "GR_Template.txt")); // Garra
                 string skTemplate = ReadFileSafe(Path.Combine(resourcesPath, "SK_Template.txt")); // Schweissen
                 string czTemplate = ReadFileSafe(Path.Combine(resourcesPath, "CZ_Template.txt")); // Durchsetzfügen (Clinch)
                 string kwTemplate = ReadFileSafe(Path.Combine(resourcesPath, "KW_Template.txt")); // Kappenwechsler
@@ -123,7 +124,7 @@ namespace VASS06_GeraFC_Robo
                 if (data.DgvFerramentas != null)
                 {
                     // Contadores para gerar nomes automáticos
-                    int skCount = 1, klCount = 1, czCount = 1, kwCount = 1;
+                    int skCount = 1, klCount = 1, czCount = 1, kwCount = 1, grCount = 1;
 
                     foreach (DataGridViewRow row in data.DgvFerramentas.Rows)
                     {
@@ -139,6 +140,12 @@ namespace VASS06_GeraFC_Robo
                         {
                             selectedTemplate = klTemplate;
                             nomeVar = $"KL{klCount++}";
+                        }
+                        else if (textoUpper.Contains("GREIFER") || textoUpper.Contains("GARRA") || textoUpper.Contains("GRIPPER") || textoUpper.Contains("G0"))
+                        {
+                            selectedTemplate = grTemplate;
+                            nomeVar = $"G0{grCount++}"; 
+                            grCount++;
                         }
                         else if (textoUpper.Contains("SCHWEISS") || textoUpper.Contains("WELD") || textoUpper.Contains("ZANGE") || textoUpper.Contains("SK"))
                         {

@@ -311,7 +311,7 @@
               </MultilingualTextItem>
             </ObjectList>
           </MultilingualText>
-          <MultilingualText ID="11F" CompositionName="Title">
+          <MultilingualText ID="[ID_unico]" CompositionName="Title">
             <ObjectList>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>

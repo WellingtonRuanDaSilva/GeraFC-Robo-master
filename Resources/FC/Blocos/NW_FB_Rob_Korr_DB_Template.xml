@@ -108,7 +108,7 @@
       <NameCon UId="[ID_bloco]" Name="deaktivieren" />
     </Wire>
     <Wire UId="[ID_unico]">
-      <IdentCon UId="2[ID_tag]4" />
+      <IdentCon UId="[ID_tag]" />
       <NameCon UId="[ID_bloco]" Name="BMK" />
     </Wire>
     <Wire UId="[ID_unico]">
@@ -162,7 +162,7 @@
               </MultilingualTextItem>
             </ObjectList>
           </MultilingualText>
-          <MultilingualText ID="9D" CompositionName="Title">
+          <MultilingualText ID="[ID_unico]" CompositionName="Title">
             <ObjectList>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>

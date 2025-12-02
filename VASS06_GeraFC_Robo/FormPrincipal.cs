@@ -288,7 +288,7 @@ namespace VASS06_GeraFC_Robo
 
                 GeradorDbUsuario.Gerar(ref data);
                 GeradorDbInstancia.Gerar(ref data);
-                //GeradorFC.Gerar(ref data);
+                GeradorFC_Robo.Gerar(ref data);
 
                 this.DBAnwenderNumber = data.DBAnwenderNumber;
                 this.DBInstanzenNumber = data.DBInstanzenNumber;

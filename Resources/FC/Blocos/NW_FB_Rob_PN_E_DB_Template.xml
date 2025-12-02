@@ -4,19 +4,19 @@
   <Parts>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
-        <Component Name="[nome_robo]_E_F" />
+        <Component Name="110010R01_E_F" />
         <Address Area="Output" Type="ST_Rob_E_F" BitOffset="8448" Informative="true" />
       </Symbol>
     </Access>
-    <Access Scope="GlobalVariable" UId="[ID_tag]
+    <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
-        <Component Name="[nome_robo]_E" />
+        <Component Name="110010R01_E" />
         <Address Area="Output" Type="ST_Rob_E" BitOffset="8192" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
-        <Component Name="[nome_robo]" />
+        <Component Name="110010R01" />
         <Component Name="Rob" />
         <Address Area="None" Type="ST_Rob" BlockNumber="100" BitOffset="0" Informative="true" />
       </Symbol>
@@ -26,7 +26,7 @@
         <IntegerAttribute Name="BlockNumber" Informative="true">202</IntegerAttribute>
         <DateAttribute Name="ParameterModifiedTS" Informative="true">2022-01-14T09:35:32</DateAttribute>
         <Instance Scope="GlobalVariable" UId="[ID_instancia]">
-          <Component Name="[nome_robo]#FB_Rob_PN_E_DB" />
+          <Component Name="110010R01#FB_Rob_PN_E_DB" />
           <Address Area="DB" Type="FB_Rob_PN_E" BlockNumber="2103" BitOffset="0" Informative="true" />
         </Instance>
         <Parameter Name="Rob_E_F" Section="Input" Type="&quot;ST_Rob_E_F&quot;">
