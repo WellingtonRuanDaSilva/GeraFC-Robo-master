@@ -1,12 +1,12 @@
-<SW.Blocks.CompileUnit ID="[ID_unico]" CompositionName="CompileUnits">
+      <SW.Blocks.CompileUnit ID="[ID_unico]" CompositionName="CompileUnits">
         <AttributeList>
-          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v3">
   <Parts>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="DB_ARG" />
         <Component Name="VKE=0" />
-        <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="93448" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="141088" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="LiteralConstant" UId="[ID_tag]">
@@ -19,8 +19,8 @@
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
-        <Component Name="FM" />
-        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34264" Informative="true" />
+        <Component Name="FM1" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="32944" Informative="true" />
       </Symbol>
     </Access>
     <Call UId="[ID_bloco]">
@@ -75,12 +75,6 @@
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
-                  <Culture>sk-SK</Culture>
-                  <Text />
-                </AttributeList>
-              </MultilingualTextItem>
-              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
-                <AttributeList>
                   <Culture>es-ES</Culture>
                   <Text />
                 </AttributeList>
@@ -88,12 +82,6 @@
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text />
-                </AttributeList>
-              </MultilingualTextItem>
-              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
-                <AttributeList>
-                  <Culture>pt-BR</Culture>
                   <Text />
                 </AttributeList>
               </MultilingualTextItem>
@@ -109,12 +97,6 @@
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
-                  <Culture>sk-SK</Culture>
-                  <Text>[titulo_network]</Text>
-                </AttributeList>
-              </MultilingualTextItem>
-              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
-                <AttributeList>
                   <Culture>es-ES</Culture>
                   <Text>[titulo_network]</Text>
                 </AttributeList>
@@ -122,12 +104,6 @@
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text>[titulo_network]</Text>
-                </AttributeList>
-              </MultilingualTextItem>
-              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
-                <AttributeList>
-                  <Culture>pt-BR</Culture>
                   <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>

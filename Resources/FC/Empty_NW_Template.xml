@@ -1,7 +1,7 @@
 ﻿<SW.Blocks.CompileUnit ID="[ID_unico]" CompositionName="CompileUnits">
         <AttributeList>
           <NetworkSource>
-<FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+<FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v3">
   <Parts>
     [lista_de_tags]
 	[lista_de_elementos]
@@ -26,7 +26,7 @@
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
-                  <Culture>pt-BR</Culture>
+                  <Culture>es-ES</Culture>
 				  <Text>[comentario_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>             
@@ -42,7 +42,7 @@
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
-                  <Culture>pt-BR</Culture>
+                  <Culture>es-ES</Culture>
                   <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>

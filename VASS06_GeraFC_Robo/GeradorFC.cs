@@ -184,7 +184,7 @@ namespace VASS06_GeraFC_Robo
 
             // Bloco - Sistema do robo (FB_Rob)
             // =================================================================
-            networkContent = Criar_Bloco("NW_FB_Rob_DB_Template.xml", "Interfaz del sistema robótico", 44, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter, fcNumber: data.FCNumber.ToString());
+            networkContent = Criar_Bloco("NW_FB_Rob_DB_Template.xml", "Interfaz del sistema robótico", 40, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter, fcNumber: data.FCNumber.ToString());
             fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
             if (data.DBInstanzenNumber < 20000) data.DBInstanzenNumber++;
 
@@ -349,7 +349,7 @@ namespace VASS06_GeraFC_Robo
                     template = "NW_FB_Rob_Greifer_DB_Template.xml";
                     instanceVar = $"G{gCount:D2}"; // Formato G01, G02
                     title = $"Greifer {instanceVar}";
-                    tags = 13;
+                    tags = 10;
                     placeholder = "G01";
                     gCount++;
                 }
@@ -472,7 +472,7 @@ namespace VASS06_GeraFC_Robo
 
             // Bloco - Tempo de ciclo (FB_Taktzeit_Plus)
             // =================================================================
-            networkContent = Criar_Bloco("NW_FB_Taktzeit_Plus_DB_Template.xml", "Tiempo de ciclo del robot", 13, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter, fcNumber: data.FCNumber.ToString());
+            networkContent = Criar_Bloco("NW_FB_Taktzeit_Plus_DB_Template.xml", "Tiempo de ciclo del robot", 10, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter, fcNumber: data.FCNumber.ToString());
             fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
             if (data.DBInstanzenNumber < 20000) data.DBInstanzenNumber++;
 
@@ -480,7 +480,7 @@ namespace VASS06_GeraFC_Robo
 
             // Bloco - Saida do robo (FB_Rob_PN_E)
             // =================================================================
-            networkContent = Criar_Bloco("NW_FB_Rob_PN_E_DB_Template.xml", "Escribir salida", 3, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter, fcNumber: data.FCNumber.ToString());
+            networkContent = Criar_Bloco("NW_FB_Rob_PN_E_DB_Template.xml", "Escribir salida", 2, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter, fcNumber: data.FCNumber.ToString());
             fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
             if (data.DBInstanzenNumber < 20000) data.DBInstanzenNumber++;
 

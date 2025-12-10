@@ -1,6 +1,6 @@
-<SW.Blocks.CompileUnit ID="[ID_unico]" CompositionName="CompileUnits">
+      <SW.Blocks.CompileUnit ID="[ID_unico]" CompositionName="CompileUnits">
         <AttributeList>
-          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v3">
   <Parts>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
@@ -8,7 +8,7 @@
         <Component Name="Rob" />
         <Component Name="A" />
         <Component Name="A15_PF0" />
-        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="1560" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="1504" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
@@ -17,7 +17,7 @@
         <Component Name="Rob" />
         <Component Name="A" />
         <Component Name="A16_SAK" />
-        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="1568" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="1512" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
@@ -25,7 +25,7 @@
         <Component Name="[nome_robo]" />
         <Component Name="Rob" />
         <Component Name="oRob" />
-        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="3320" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="3208" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
@@ -34,7 +34,7 @@
         <Component Name="Rob" />
         <Component Name="A" />
         <Component Name="A65_72_Wkz_FRG" />
-        <Address Area="None" Type="Byte" BlockNumber="[numero_FC]" BitOffset="1784" Informative="true" />
+        <Address Area="None" Type="Byte" BlockNumber="[numero_FC]" BitOffset="1680" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="LiteralConstant" UId="[ID_tag]">
@@ -48,56 +48,56 @@
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="A65" />
-        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34384" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="33128" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="A66" />
-        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34392" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="33136" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="A67" />
-        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34400" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="33144" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="A68" />
-        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34408" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="33152" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="A69" />
-        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34416" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="33160" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="A70" />
-        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34424" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="33168" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="A71" />
-        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34432" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="33176" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="A72" />
-        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34440" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="33184" Informative="true" />
       </Symbol>
     </Access>
     <Call UId="[ID_bloco]">
@@ -105,8 +105,8 @@
         <IntegerAttribute Name="BlockNumber" Informative="true">208</IntegerAttribute>
         <DateAttribute Name="ParameterModifiedTS" Informative="true">2017-08-01T16:24:04</DateAttribute>
         <Instance Scope="GlobalVariable" UId="[ID_instancia]">
-          <Component Name="[nome_robo]_Frg1#FB_Rob_Frg_DB" />
-          <Address Area="DB" Type="FB_Rob_Frg" BlockNumber="2094" BitOffset="0" Informative="true" />
+          <Component Name="[nome_robo]_Frg2#FB_Rob_Frg_DB" />
+          <Address Area="DB" Type="FB_Rob_Frg" BlockNumber="2095" BitOffset="0" Informative="true" />
         </Instance>
         <Parameter Name="PF0" Section="Input" Type="Bool">
           <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
@@ -222,12 +222,6 @@
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
-                  <Culture>sk-SK</Culture>
-                  <Text />
-                </AttributeList>
-              </MultilingualTextItem>
-              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
-                <AttributeList>
                   <Culture>es-ES</Culture>
                   <Text />
                 </AttributeList>
@@ -235,12 +229,6 @@
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text />
-                </AttributeList>
-              </MultilingualTextItem>
-              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
-                <AttributeList>
-                  <Culture>pt-BR</Culture>
                   <Text />
                 </AttributeList>
               </MultilingualTextItem>
@@ -256,12 +244,6 @@
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
-                  <Culture>sk-SK</Culture>
-                  <Text>[titulo_network]</Text>
-                </AttributeList>
-              </MultilingualTextItem>
-              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
-                <AttributeList>
                   <Culture>es-ES</Culture>
                   <Text>[titulo_network]</Text>
                 </AttributeList>
@@ -269,12 +251,6 @@
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text>[titulo_network]</Text>
-                </AttributeList>
-              </MultilingualTextItem>
-              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
-                <AttributeList>
-                  <Culture>pt-BR</Culture>
                   <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>

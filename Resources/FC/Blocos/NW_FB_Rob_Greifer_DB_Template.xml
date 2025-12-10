@@ -1,18 +1,18 @@
-<SW.Blocks.CompileUnit ID="[ID_unico]" CompositionName="CompileUnits">
+      <SW.Blocks.CompileUnit ID="[ID_unico]" CompositionName="CompileUnits">
         <AttributeList>
-          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v3">
   <Parts>
     <Access Scope="LiteralConstant" UId="[ID_tag]">
       <Constant>
         <ConstantType>Int</ConstantType>
-        <ConstantValue>2</ConstantValue>
+        <ConstantValue>3</ConstantValue>
         <StringAttribute Name="Format" Informative="true">Dec_signed</StringAttribute>
       </Constant>
     </Access>
     <Access Scope="LiteralConstant" UId="[ID_tag]">
       <Constant>
         <ConstantType>Word</ConstantType>
-        <ConstantValue>2#1_0000</ConstantValue>
+        <ConstantValue>2#0</ConstantValue>
         <StringAttribute Name="Format" Informative="true">Bin</StringAttribute>
       </Constant>
     </Access>
@@ -27,15 +27,8 @@
       <Symbol>
         <Component Name="DB_ARG" />
         <Component Name="VKE=0" />
-        <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="93448" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="141088" Informative="true" />
       </Symbol>
-    </Access>
-    <Access Scope="TypedConstant" UId="[ID_tag]">
-      <Constant>
-        <ConstantValue>T#2s</ConstantValue>
-        <StringAttribute Name="Format" Informative="true">Time</StringAttribute>
-        <StringAttribute Name="FormatFlags" Informative="true">TypeQualifier</StringAttribute>
-      </Constant>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
@@ -48,27 +41,14 @@
       <Symbol>
         <Component Name="[nome_robo]" />
         <Component Name="PG" />
-        <Address Area="None" Type="ST_PG" BlockNumber="[numero_FC]" BitOffset="16624" Informative="true" />
+        <Address Area="None" Type="ST_PG" BlockNumber="[numero_FC]" BitOffset="15504" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="11" />
         <Component Name="BA" />
-        <Address Area="None" Type="ST_Betriebsarten" BlockNumber="14" BitOffset="0" Informative="true" />
-      </Symbol>
-    </Access>
-    <Access Scope="LocalVariable" UId="[ID_tag]">
-      <Symbol>
-        <Component Name="Temp" />
-        <Component Name="_Bool" />
-      </Symbol>
-    </Access>
-    <Access Scope="GlobalVariable" UId="[ID_tag]">
-      <Symbol>
-        <Component Name="[nome_robo]" />
-        <Component Name="nBT" />
-        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="35040" Informative="true" />
+        <Address Area="None" Type="ST_Betriebsarten" BlockNumber="15" BitOffset="0" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="LocalVariable" UId="[ID_tag]">
@@ -92,10 +72,10 @@
     <Call UId="[ID_bloco]">
       <CallInfo Name="FB_Rob_Greifer" BlockType="FB">
         <IntegerAttribute Name="BlockNumber" Informative="true">250</IntegerAttribute>
-        <DateAttribute Name="ParameterModifiedTS" Informative="true">2024-07-24T05:53:46</DateAttribute>
+        <DateAttribute Name="ParameterModifiedTS" Informative="true">2018-04-06T07:42:21</DateAttribute>
         <Instance Scope="GlobalVariable" UId="[ID_instancia]">
           <Component Name="[nome_robo]G01#FB_Rob_Greifer_DB" />
-          <Address Area="DB" Type="FB_Rob_Greifer" BlockNumber="2079" BitOffset="0" Informative="true" />
+          <Address Area="DB" Type="FB_Rob_Greifer" BlockNumber="2401" BitOffset="0" Informative="true" />
         </Instance>
         <Parameter Name="Layer" Section="Input" Type="Int">
           <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
@@ -103,22 +83,13 @@
         <Parameter Name="Cfg" Section="Input" Type="Word">
           <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
         </Parameter>
-        <Parameter Name="Beschr" Section="Input" Type="String[35]">
+        <Parameter Name="Beschr" Section="Input" Type="String[25]">
           <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
         </Parameter>
         <Parameter Name="VkStoe_In" Section="Input" Type="Bool">
           <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
         </Parameter>
-        <Parameter Name="ZUeBT" Section="Input" Type="Time">
-          <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
-        </Parameter>
         <Parameter Name="PA" Section="Output" Type="Bool">
-          <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
-        </Parameter>
-        <Parameter Name="nBT" Section="Output" Type="Bool">
-          <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
-        </Parameter>
-        <Parameter Name="BT" Section="Output" Type="Bool">
           <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
         </Parameter>
         <Parameter Name="Stoexx" Section="Output" Type="Bool">
@@ -127,13 +98,13 @@
         <Parameter Name="Vk_Stoe_Out" Section="Output" Type="Bool">
           <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
         </Parameter>
-        <Parameter Name="ST_ROB" Section="InOut" Type="&quot;ST_Rob&quot;">
+        <Parameter Name="ST_ROB" Section="InOut" Type="ST_Rob">
           <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
         </Parameter>
-        <Parameter Name="ST_PG" Section="InOut" Type="&quot;ST_PG&quot;">
+        <Parameter Name="ST_PG" Section="InOut" Type="ST_PG">
           <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
         </Parameter>
-        <Parameter Name="ST_BA" Section="InOut" Type="&quot;ST_Betriebsarten&quot;">
+        <Parameter Name="ST_BA" Section="InOut" Type="ST_Betriebsarten">
           <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
         </Parameter>
       </CallInfo>
@@ -162,10 +133,6 @@
     </Wire>
     <Wire UId="[ID_unico]">
       <IdentCon UId="[ID_tag]" />
-      <NameCon UId="[ID_bloco]" Name="ZUeBT" />
-    </Wire>
-    <Wire UId="[ID_unico]">
-      <IdentCon UId="[ID_tag]" />
       <NameCon UId="[ID_bloco]" Name="ST_ROB" />
     </Wire>
     <Wire UId="[ID_unico]">
@@ -178,14 +145,6 @@
     </Wire>
     <Wire UId="[ID_unico]">
       <NameCon UId="[ID_bloco]" Name="PA" />
-      <IdentCon UId="[ID_tag]" />
-    </Wire>
-    <Wire UId="[ID_unico]">
-      <NameCon UId="[ID_bloco]" Name="nBT" />
-      <IdentCon UId="[ID_tag]" />
-    </Wire>
-    <Wire UId="[ID_unico]">
-      <NameCon UId="[ID_bloco]" Name="BT" />
       <IdentCon UId="[ID_tag]" />
     </Wire>
     <Wire UId="[ID_unico]">
@@ -211,12 +170,6 @@
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
-                  <Culture>sk-SK</Culture>
-                  <Text />
-                </AttributeList>
-              </MultilingualTextItem>
-              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
-                <AttributeList>
                   <Culture>es-ES</Culture>
                   <Text />
                 </AttributeList>
@@ -224,12 +177,6 @@
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text />
-                </AttributeList>
-              </MultilingualTextItem>
-              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
-                <AttributeList>
-                  <Culture>pt-BR</Culture>
                   <Text />
                 </AttributeList>
               </MultilingualTextItem>
@@ -245,12 +192,6 @@
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
-                  <Culture>sk-SK</Culture>
-                  <Text>[titulo_network]</Text>
-                </AttributeList>
-              </MultilingualTextItem>
-              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
-                <AttributeList>
                   <Culture>es-ES</Culture>
                   <Text>[titulo_network]</Text>
                 </AttributeList>
@@ -258,12 +199,6 @@
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text>[titulo_network]</Text>
-                </AttributeList>
-              </MultilingualTextItem>
-              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
-                <AttributeList>
-                  <Culture>pt-BR</Culture>
                   <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>

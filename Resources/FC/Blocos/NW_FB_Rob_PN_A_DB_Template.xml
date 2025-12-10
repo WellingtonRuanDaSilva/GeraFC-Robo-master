@@ -1,6 +1,6 @@
-<SW.Blocks.CompileUnit ID="[ID_unico]" CompositionName="CompileUnits">
+      <SW.Blocks.CompileUnit ID="[ID_unico]" CompositionName="CompileUnits">
         <AttributeList>
-          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v3">
   <Parts>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
@@ -31,21 +31,21 @@
     <Call UId="[ID_bloco]">
       <CallInfo Name="FB_Rob_PN_A" BlockType="FB">
         <IntegerAttribute Name="BlockNumber" Informative="true">201</IntegerAttribute>
-        <DateAttribute Name="ParameterModifiedTS" Informative="true">2024-04-29T15:32:09</DateAttribute>
+        <DateAttribute Name="ParameterModifiedTS" Informative="true">2018-07-06T08:48:13</DateAttribute>
         <Instance Scope="GlobalVariable" UId="[ID_instancia]">
           <Component Name="[nome_robo]#FB_Rob_PN_A_DB" />
           <Address Area="DB" Type="FB_Rob_PN_A" BlockNumber="2086" BitOffset="0" Informative="true" />
         </Instance>
-        <Parameter Name="Rob_A_F" Section="Input" Type="&quot;ST_Rob_A_F&quot;">
+        <Parameter Name="Rob_A_F" Section="Input" Type="ST_Rob_A_F">
           <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
         </Parameter>
-        <Parameter Name="Rob_A" Section="Input" Type="&quot;ST_Rob_A&quot;">
+        <Parameter Name="Rob_A" Section="Input" Type="ST_Rob_A">
           <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
         </Parameter>
         <Parameter Name="Cfg" Section="Input" Type="Word">
           <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
         </Parameter>
-        <Parameter Name="ST_ROB" Section="InOut" Type="&quot;ST_Rob&quot;">
+        <Parameter Name="ST_ROB" Section="InOut" Type="ST_Rob">
           <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
         </Parameter>
       </CallInfo>
@@ -87,12 +87,6 @@
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
-                  <Culture>sk-SK</Culture>
-                  <Text>Laden Inputs (Rob_A) in ST_Rob</Text>
-                </AttributeList>
-              </MultilingualTextItem>
-              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
-                <AttributeList>
                   <Culture>es-ES</Culture>
                   <Text />
                 </AttributeList>
@@ -100,12 +94,6 @@
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text />
-                </AttributeList>
-              </MultilingualTextItem>
-              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
-                <AttributeList>
-                  <Culture>pt-BR</Culture>
                   <Text />
                 </AttributeList>
               </MultilingualTextItem>
@@ -121,12 +109,6 @@
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
-                  <Culture>sk-SK</Culture>
-                  <Text>[titulo_network]</Text>
-                </AttributeList>
-              </MultilingualTextItem>
-              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
-                <AttributeList>
                   <Culture>es-ES</Culture>
                   <Text>[titulo_network]</Text>
                 </AttributeList>
@@ -134,12 +116,6 @@
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text>[titulo_network]</Text>
-                </AttributeList>
-              </MultilingualTextItem>
-              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
-                <AttributeList>
-                  <Culture>pt-BR</Culture>
                   <Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>

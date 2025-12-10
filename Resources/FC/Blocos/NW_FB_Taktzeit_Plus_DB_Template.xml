@@ -1,13 +1,13 @@
-<SW.Blocks.CompileUnit ID="[ID_unico]" CompositionName="CompileUnits">
+      <SW.Blocks.CompileUnit ID="[ID_unico]" CompositionName="CompileUnits">
         <AttributeList>
-          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v3">
   <Parts>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="11" />
         <Component Name="BA" />
         <Component Name="SWE7" />
-        <Address Area="None" Type="Bool" BlockNumber="14" BitOffset="168" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="14" BitOffset="136" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
@@ -19,30 +19,22 @@
       <Symbol>
         <Component Name="DB_ARG" />
         <Component Name="VKE=0" />
-        <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="93448" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="141088" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
-        <Component Name="A80" />
-        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34568" Informative="true" />
+        <Component Name="TZStop" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="32912" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
-        <Component Name="TZ" />
-        <Component Name="Typ" />
-        <Address Area="None" Type="Int" BlockNumber="[numero_FC]" BitOffset="33840" Informative="true" />
+        <Component Name="Taktzeit_Plus_Typ" />
+        <Address Area="None" Type="Int" BlockNumber="[numero_FC]" BitOffset="32720" Informative="true" />
       </Symbol>
-    </Access>
-    <Access Scope="LiteralConstant" UId="[ID_tag]">
-      <Constant>
-        <ConstantType>Int</ConstantType>
-        <ConstantValue>0</ConstantValue>
-        <StringAttribute Name="Format" Informative="true">Dec_signed</StringAttribute>
-      </Constant>
     </Access>
     <Access Scope="LiteralConstant" UId="[ID_tag]">
       <Constant>
@@ -58,13 +50,6 @@
         <StringAttribute Name="Format" Informative="true">Dec_signed</StringAttribute>
       </Constant>
     </Access>
-    <Access Scope="GlobalVariable" UId="[ID_tag]">
-      <Symbol>
-        <Component Name="DB_Taktzeiten_Plus_Multi" />
-        <Component Name="arrUDT" />
-        <Address Area="None" Type="Array[1..19] of &quot;UDT_arr_Taktzeit_Plus&quot;" BlockNumber="151" BitOffset="32" Informative="true" />
-      </Symbol>
-    </Access>
     <Access Scope="LocalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="Temp" />
@@ -74,31 +59,21 @@
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
-        <Component Name="TZ" />
-        <Component Name="L_Wert" />
-        <Address Area="None" Type="Int" BlockNumber="[numero_FC]" BitOffset="33888" Informative="true" />
+        <Component Name="TZL_Wert" />
+        <Address Area="None" Type="Int" BlockNumber="[numero_FC]" BitOffset="32" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
-        <Component Name="TZ" />
-        <Component Name="FZ_Start" />
-        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="33936" Informative="true" />
-      </Symbol>
-    </Access>
-    <Access Scope="GlobalVariable" UId="[ID_tag]">
-      <Symbol>
-        <Component Name="[nome_robo]" />
-        <Component Name="TZ" />
-        <Component Name="Stoe" />
-        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="33944" Informative="true" />
+        <Component Name="TZStoe" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="32920" Informative="true" />
       </Symbol>
     </Access>
     <Call UId="[ID_bloco]">
       <CallInfo Name="FB_Taktzeit_Plus" BlockType="FB">
         <IntegerAttribute Name="BlockNumber" Informative="true">625</IntegerAttribute>
-        <DateAttribute Name="ParameterModifiedTS" Informative="true">2024-05-15T07:51:54</DateAttribute>
+        <DateAttribute Name="ParameterModifiedTS" Informative="true">2018-04-06T07:42:18</DateAttribute>
         <Instance Scope="GlobalVariable" UId="[ID_instancia]">
           <Component Name="[nome_robo]#FB_Taktzeit_Plus_DB" />
           <Address Area="DB" Type="FB_Taktzeit_Plus" BlockNumber="2102" BitOffset="0" Informative="true" />
@@ -118,9 +93,6 @@
         <Parameter Name="Typ" Section="Input" Type="Int">
           <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
         </Parameter>
-        <Parameter Name="Soll" Section="Input" Type="Int">
-          <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
-        </Parameter>
         <Parameter Name="Cfg" Section="Input" Type="Word">
           <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
         </Parameter>
@@ -133,13 +105,7 @@
         <Parameter Name="L_Wert" Section="Output" Type="Int">
           <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
         </Parameter>
-        <Parameter Name="FZ_Start" Section="Output" Type="Bool">
-          <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
-        </Parameter>
         <Parameter Name="Stoe" Section="Output" Type="Bool">
-          <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
-        </Parameter>
-        <Parameter Name="arrUDT" Section="InOut" Type="Array[*] of &quot;UDT_arr_Taktzeit_Plus&quot;">
           <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
         </Parameter>
       </CallInfo>
@@ -172,10 +138,6 @@
     </Wire>
     <Wire UId="[ID_unico]">
       <IdentCon UId="[ID_tag]" />
-      <NameCon UId="[ID_bloco]" Name="Soll" />
-    </Wire>
-    <Wire UId="[ID_unico]">
-      <IdentCon UId="[ID_tag]" />
       <NameCon UId="[ID_bloco]" Name="Cfg" />
     </Wire>
     <Wire UId="[ID_unico]">
@@ -183,19 +145,11 @@
       <NameCon UId="[ID_bloco]" Name="Layer" />
     </Wire>
     <Wire UId="[ID_unico]">
-      <IdentCon UId="[ID_tag]" />
-      <NameCon UId="[ID_bloco]" Name="arrUDT" />
-    </Wire>
-    <Wire UId="[ID_unico]">
       <NameCon UId="[ID_bloco]" Name="Wert" />
       <IdentCon UId="[ID_tag]" />
     </Wire>
     <Wire UId="[ID_unico]">
       <NameCon UId="[ID_bloco]" Name="L_Wert" />
-      <IdentCon UId="[ID_tag]" />
-    </Wire>
-    <Wire UId="[ID_unico]">
-      <NameCon UId="[ID_bloco]" Name="FZ_Start" />
       <IdentCon UId="[ID_tag]" />
     </Wire>
     <Wire UId="[ID_unico]">
@@ -217,13 +171,6 @@
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
-                  <Culture>sk-SK</Culture>
-                  <Text>Roboter Bearbeitet Teil am Drehtisch.
-Es wird nur die Zeit der Arbeit an der Vorrichtung gemessen.</Text>
-                </AttributeList>
-              </MultilingualTextItem>
-              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
-                <AttributeList>
                   <Culture>es-ES</Culture>
                   <Text />
                 </AttributeList>
@@ -231,12 +178,6 @@ Es wird nur die Zeit der Arbeit an der Vorrichtung gemessen.</Text>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text />
-                </AttributeList>
-              </MultilingualTextItem>
-              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
-                <AttributeList>
-                  <Culture>pt-BR</Culture>
                   <Text />
                 </AttributeList>
               </MultilingualTextItem>
@@ -252,12 +193,6 @@ Es wird nur die Zeit der Arbeit an der Vorrichtung gemessen.</Text>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
-                  <Culture>sk-SK</Culture>
-                  <Text>[titulo_network] [nome_robo]</Text>
-                </AttributeList>
-              </MultilingualTextItem>
-              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
-                <AttributeList>
                   <Culture>es-ES</Culture>
                   <Text>[titulo_network] [nome_robo]</Text>
                 </AttributeList>
@@ -265,12 +200,6 @@ Es wird nur die Zeit der Arbeit an der Vorrichtung gemessen.</Text>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text>[titulo_network] [nome_robo]</Text>
-                </AttributeList>
-              </MultilingualTextItem>
-              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
-                <AttributeList>
-                  <Culture>pt-BR</Culture>
                   <Text>[titulo_network] [nome_robo]</Text>
                 </AttributeList>
               </MultilingualTextItem>

@@ -1,19 +1,103 @@
-<SW.Blocks.CompileUnit ID="[ID_unico]" CompositionName="CompileUnits">
+      <SW.Blocks.CompileUnit ID="[ID_unico]" CompositionName="CompileUnits">
         <AttributeList>
-          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v3">
   <Parts>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="DB_ARG" />
         <Component Name="VKE=0" />
-        <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="93448" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="141088" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
         [linha_adicional]
-        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34248" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="32928" Informative="true" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="[ID_tag]">
+      <Constant>
+        <ConstantType>Byte</ConstantType>
+        <ConstantValue>1</ConstantValue>
+        <StringAttribute Name="Format" Informative="true">Dec_unsigned</StringAttribute>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="[ID_tag]">
+      <Symbol>
+        <Component Name="[nome_robo]" />
+        [linha_adicional]
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="32936" Informative="true" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="[ID_tag]">
+      <Constant>
+        <ConstantType>Byte</ConstantType>
+        <ConstantValue>[numero_folge]</ConstantValue>
+        <StringAttribute Name="Format" Informative="true">Dec_unsigned</StringAttribute>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="[ID_tag]">
+      <Symbol>
+        <Component Name="[nome_robo]" />
+        [linha_adicional]
+        <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="141088" Informative="true" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="[ID_tag]">
+      <Constant>
+        <ConstantType>Byte</ConstantType>
+        <ConstantValue>[numero_folge]</ConstantValue>
+        <StringAttribute Name="Format" Informative="true">Dec_unsigned</StringAttribute>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="[ID_tag]">
+      <Symbol>
+        <Component Name="[nome_robo]" />
+        [linha_adicional]
+        <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="141088" Informative="true" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="[ID_tag]">
+      <Constant>
+        <ConstantType>Byte</ConstantType>
+        <ConstantValue>[numero_folge]</ConstantValue>
+        <StringAttribute Name="Format" Informative="true">Dec_unsigned</StringAttribute>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="[ID_tag]">
+      <Symbol>
+        <Component Name="[nome_robo]" />
+        [linha_adicional]
+        <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="141088" Informative="true" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="[ID_tag]">
+      <Constant>
+        <ConstantType>Byte</ConstantType>
+        <ConstantValue>[numero_folge]</ConstantValue>
+        <StringAttribute Name="Format" Informative="true">Dec_unsigned</StringAttribute>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="[ID_tag]">
+      <Symbol>
+        <Component Name="[nome_robo]" />
+        [linha_adicional]
+        <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="141088" Informative="true" />
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="[ID_tag]">
+      <Constant>
+        <ConstantType>Byte</ConstantType>
+        <ConstantValue>[numero_folge]</ConstantValue>
+        <StringAttribute Name="Format" Informative="true">Dec_unsigned</StringAttribute>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="[ID_tag]">
+      <Symbol>
+        <Component Name="[nome_robo]" />
+        [linha_adicional]
+        <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="141088" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="LiteralConstant" UId="[ID_tag]">
@@ -27,91 +111,7 @@
       <Symbol>
         <Component Name="[nome_robo]" />
 		  [linha_adicional]
-		  <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="34256" Informative="true" />
-      </Symbol>
-    </Access>
-    <Access Scope="LiteralConstant" UId="[ID_tag]">
-      <Constant>
-        <ConstantType>Byte</ConstantType>
-        <ConstantValue>[numero_folge]</ConstantValue>
-        <StringAttribute Name="Format" Informative="true">Dec_unsigned</StringAttribute>
-      </Constant>
-    </Access>
-    <Access Scope="GlobalVariable" UId="[ID_tag]">
-      <Symbol>
-        <Component Name="[nome_robo]" />
-        [linha_adicional]
-        <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="93448" Informative="true" />
-      </Symbol>
-    </Access>
-    <Access Scope="LiteralConstant" UId="[ID_tag]">
-      <Constant>
-        <ConstantType>Byte</ConstantType>
-        <ConstantValue>[numero_folge]</ConstantValue>
-        <StringAttribute Name="Format" Informative="true">Dec_unsigned</StringAttribute>
-      </Constant>
-    </Access>
-    <Access Scope="GlobalVariable" UId="[ID_tag]">
-      <Symbol>
-        <Component Name="[nome_robo]" />
-        [linha_adicional]
-        <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="93448" Informative="true" />
-      </Symbol>
-    </Access>
-    <Access Scope="LiteralConstant" UId="[ID_tag]">
-      <Constant>
-        <ConstantType>Byte</ConstantType>
-        <ConstantValue>[numero_folge]</ConstantValue>
-        <StringAttribute Name="Format" Informative="true">Dec_unsigned</StringAttribute>
-      </Constant>
-    </Access>
-    <Access Scope="GlobalVariable" UId="[ID_tag]">
-      <Symbol>
-        <Component Name="[nome_robo]" />
-        [linha_adicional]
-        <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="93448" Informative="true" />
-      </Symbol>
-    </Access>
-    <Access Scope="LiteralConstant" UId="[ID_tag]">
-      <Constant>
-        <ConstantType>Byte</ConstantType>
-        <ConstantValue>[numero_folge]</ConstantValue>
-        <StringAttribute Name="Format" Informative="true">Dec_unsigned</StringAttribute>
-      </Constant>
-    </Access>
-    <Access Scope="GlobalVariable" UId="[ID_tag]">
-      <Symbol>
-        <Component Name="[nome_robo]" />
-        [linha_adicional]
-        <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="93448" Informative="true" />
-      </Symbol>
-    </Access>
-    <Access Scope="LiteralConstant" UId="[ID_tag]">
-      <Constant>
-        <ConstantType>Byte</ConstantType>
-        <ConstantValue>0</ConstantValue>
-        <StringAttribute Name="Format" Informative="true">Dec_unsigned</StringAttribute>
-      </Constant>
-    </Access>
-    <Access Scope="GlobalVariable" UId="[ID_tag]">
-      <Symbol>
-        <Component Name="[nome_robo]" />
-        [linha_adicional]
-        <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="93448" Informative="true" />
-      </Symbol>
-    </Access>
-    <Access Scope="LiteralConstant" UId="[ID_tag]">
-      <Constant>
-        <ConstantType>Byte</ConstantType>
-        <ConstantValue>[numero_folge]</ConstantValue>
-        <StringAttribute Name="Format" Informative="true">Dec_unsigned</StringAttribute>
-      </Constant>
-    </Access>
-    <Access Scope="GlobalVariable" UId="[ID_tag]">
-      <Symbol>
-        <Component Name="[nome_robo]" />
-		  [linha_adicional]
-		  <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="93448" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="150" BitOffset="141088" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="LiteralConstant" UId="[ID_tag]">
@@ -126,7 +126,7 @@
         <Component Name="[nome_robo]" />
         <Component Name="Rob" />
         <Component Name="Folge" />
-        <Address Area="None" Type="Byte" BlockNumber="[numero_FC]" BitOffset="3272" Informative="true" />
+        <Address Area="None" Type="Byte" BlockNumber="[numero_FC]" BitOffset="3160" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
@@ -134,7 +134,7 @@
         <Component Name="[nome_robo]" />
         <Component Name="Rob" />
         <Component Name="FrgFolge" />
-        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="3240" Informative="true" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="3128" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="LocalVariable" UId="[ID_tag]">
@@ -148,7 +148,7 @@
         <IntegerAttribute Name="BlockNumber" Informative="true">203</IntegerAttribute>
         <DateAttribute Name="ParameterModifiedTS" Informative="true">2017-08-01T16:19:51</DateAttribute>
         <Instance Scope="GlobalVariable" UId="[ID_instancia]">
-          <Component Name="[nome_bloco]#FB_RobFolge_8_DB" />
+          <Component Name="[nome_robo]#FB_RobFolge_8_DB" />
           <Address Area="DB" Type="FB_RobFolge_8" BlockNumber="2087" BitOffset="0" Informative="true" />
         </Instance>
         <Parameter Name="PaFeVerk" Section="Input" Type="Bool">
@@ -236,7 +236,7 @@
       <NameCon UId="[ID_bloco]" Name="FrgFolge2" />
     </Wire>
     <Wire UId="[ID_unico]">
-      <IdentCon UId="[ID_tag]" />
+      <IdentCon UId="[ID_tag][ID_tag]" />
       <NameCon UId="[ID_bloco]" Name="Folge2" />
     </Wire>
     <Wire UId="[ID_unico]">
@@ -314,12 +314,6 @@
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
-                  <Culture>sk-SK</Culture>
-                  <Text />
-                </AttributeList>
-              </MultilingualTextItem>
-              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
-                <AttributeList>
                   <Culture>es-ES</Culture>
                   <Text />
                 </AttributeList>
@@ -327,12 +321,6 @@
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text />
-                </AttributeList>
-              </MultilingualTextItem>
-              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
-                <AttributeList>
-                  <Culture>pt-BR</Culture>
                   <Text />
                 </AttributeList>
               </MultilingualTextItem>
@@ -348,12 +336,6 @@
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
-                  <Culture>sk-SK</Culture>
-                  <Text>[titulo_network]</Text>
-                </AttributeList>
-              </MultilingualTextItem>
-              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
-                <AttributeList>
                   <Culture>es-ES</Culture>
 					<Text>[titulo_network]</Text>
                 </AttributeList>
@@ -361,12 +343,6 @@
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-					<Text>[titulo_network]</Text>
-                </AttributeList>
-              </MultilingualTextItem>
-              <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
-                <AttributeList>
-                  <Culture>pt-BR</Culture>
 					<Text>[titulo_network]</Text>
                 </AttributeList>
               </MultilingualTextItem>
