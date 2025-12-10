@@ -11,28 +11,33 @@ namespace VASS06_GeraFC_Robo
         public ExcelWorksheet worksheet;
         private string selectedSheetName;
 
-        private int securityFirstRow = 27;
-        private int toolsFirstRow = 10;
-        private int interlockFirstRow = 9;
-        private int fmFirstRow = 22;
-        private int folgesFirstRow = 9;
-        private int inputsFirstRow = 9;
-        private int outputsFirstRow = 9;
+        // --- NOVAS POSIÇÕES DEFINIDAS ---
+        private int securityFirstRow = 24;   // P27 -> Q24
+        private int toolsFirstRow = 10;      // Mantido (sem info contrária)
+        private int interlockFirstRow = 4;   // Acompanha o cabeçalho geral (era 9)
+        private int fmFirstRow = 30;         // B28 -> D30
+        private int folgesFirstRow = 4;      // B15 -> A4
+        private int inputsFirstRow = 4;      // E9 -> G4
+        private int outputsFirstRow = 4;     // Acompanha inputs
 
-        private int securityCurrentRow =27;
-        private int toolsCurrentRow = 10;
-        private int interlockCurrentRow = 9;
-        private int fmCurrentRow = 28;
-        private int folgesCurrentRow = 15;
-        private int inputsCurrentRow = 9;
-        private int outputsCurrentRow = 9;
+        private int securityCurrentRow;
+        private int toolsCurrentRow;
+        private int interlockCurrentRow;
+        private int fmCurrentRow;
+        private int folgesCurrentRow;
+        private int inputsCurrentRow;
+        private int outputsCurrentRow;
 
+        // Limites de leitura (ajustados para varrer até o fim ou um numero fixo seguro)
+        // Como o método usa worksheet.Dimension.End.Row, esses "LastRow" fixos
+        // são usados apenas nos loops de contagem se não for dinâmico.
+        // Vou manter os valores originais como referência mínima, mas o loop principal usa 'endRow'.
         private int toolsLastRow = 24;
         private int interlockLastRow = 24;
-        private int fmLastRow = 41;
+        private int fmLastRow = 60; // Aumentado por segurança
         private int folgesLastRow = 24;
-        private int inputsLastRow = 46;
-        private int outputsLastRow = 46;
+        private int inputsLastRow = 100; // Aumentado
+        private int outputsLastRow = 100; // Aumentado
 
         private int securityAmount = 0;
         private int toolsAmount = 0;
@@ -46,7 +51,8 @@ namespace VASS06_GeraFC_Robo
         private string stationNumber = "";
         private string robNumber = "";
 
-        private int DBAnwenderNumber = 10;
+        // === ALTERAÇÃO AQUI: Valores iniciais ajustados para 100 ===
+        private int DBAnwenderNumber = 100;
         private int DBInstanzenNumber = 2000;
         private int FCNumber = 100;
 
@@ -60,10 +66,22 @@ namespace VASS06_GeraFC_Robo
             config_DataGridView_Folges();
             config_DataGridView_Entradas();
             config_DataGridView_Saidas();
-            configTXB(txb_DBUsuario, 10, 149);
+
+            // === ALTERAÇÃO AQUI: Define o texto inicial como "100" ===
+            txb_DBUsuario.Text = "100";
+            txb_NumeroFC.Text = "100";
+
+            // === ALTERAÇÃO AQUI: Limites superiores aumentados para remover o alerta ===
+            // DB Usuario: Limite aumentado para 1000 (era 149)
+            configTXB(txb_DBUsuario, 1, 1000);
+
+            // DB Instancia: Mantido
             configTXB(txb_DBInstancia, 2000, 20000);
-            configTXB(txb_NumeroFC, 14, 99);
+
+            // Numero FC: Limite aumentado para 1000 (era 99)
+            configTXB(txb_NumeroFC, 1, 1000);
         }
+
         private void FormPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
@@ -107,61 +125,93 @@ namespace VASS06_GeraFC_Robo
 
                 if (worksheet != null)
                 {
-                    txb_Estacao.Text = worksheet.Cells["C6"].Text;
-                    txb_Grupo.Text = worksheet.Cells["C4"].Text;
-                    txb_Robo.Text = worksheet.Cells["C9"].Text;
+                    // Lógica B1: 2 chars SK, 4 chars Estação, 3 chars Robô
+                    string fullID = worksheet.Cells["B1"].Text;
+                    if (!string.IsNullOrEmpty(fullID) && fullID.Length >= 9)
+                    {
+                        txb_Grupo.Text = fullID.Substring(0, 2);
+                        txb_Estacao.Text = fullID.Substring(2, 4);
+                        txb_Robo.Text = fullID.Substring(6, 3);
+                    }
+                    else
+                    {
+                        txb_Grupo.Text = "";
+                        txb_Estacao.Text = "";
+                        txb_Robo.Text = "";
+                    }
                 }
             }
 
             SKNumber = txb_Grupo.Text;
             stationNumber = txb_Estacao.Text;
-            robNumber =  txb_Robo.Text;
+            robNumber = txb_Robo.Text;
 
+            // Reinicia contadores
             securityAmount = 0;
-            securityCurrentRow = 27;
             toolsAmount = 0;
-            toolsCurrentRow = 10;
             interlockAmount = 0;
-            interlockCurrentRow = 9;
             fmAmount = 0;
-            fmCurrentRow = 28;
             folgesAmount = 0;
-            folgesCurrentRow = 15;
             inputsAmount = 0;
-            inputsCurrentRow = 9;
             outputsAmount = 0;
-            outputsCurrentRow = 9;
+
+            // Define linhas iniciais para leitura (reset)
+            securityCurrentRow = securityFirstRow;   // 24
+            toolsCurrentRow = toolsFirstRow;         // 10
+            interlockCurrentRow = interlockFirstRow; // 4
+            fmCurrentRow = fmFirstRow;               // 30
+            folgesCurrentRow = folgesFirstRow;       // 4
+            inputsCurrentRow = inputsFirstRow;       // 4
+            outputsCurrentRow = outputsFirstRow;     // 4
 
             int endRow = worksheet.Dimension.End.Row;
+
+            // === LOOPS DE CONTAGEM ===
+
+            // Segurança: Coluna Q (17) a partir da linha 24
             for (int row = securityFirstRow; row <= endRow; row++)
             {
-                if (!string.IsNullOrEmpty(worksheet.Cells[row, 16].Text)) securityAmount++;
+                if (!string.IsNullOrEmpty(worksheet.Cells[row, 17].Text)) securityAmount++;
             }
+
+            // Ferramentas: Coluna T (20) a partir da linha 10 (Mantido original)
             for (int row = toolsFirstRow; row <= toolsLastRow; row++)
             {
                 if (!string.IsNullOrEmpty(worksheet.Cells[row, 20].Text)) toolsAmount++;
             }
+
+            // Interlocks: Coluna Q (17) a partir da linha 4
             for (int row = interlockFirstRow; row <= interlockLastRow; row++)
             {
-                if (!string.IsNullOrEmpty(worksheet.Cells[row, 16].Text)) interlockAmount++;
-            }
-            for (int row = fmFirstRow; row <= fmLastRow; row++)
-            {
-                if (!string.IsNullOrEmpty(worksheet.Cells[row, 2].Text)) fmAmount++;
-            }
-            for (int row = folgesFirstRow; row <= folgesLastRow; row++)
-            {
-                if (!string.IsNullOrEmpty(worksheet.Cells[row, 2].Text)) folgesAmount++;
-            }
-            for (int row = inputsFirstRow; row <= inputsLastRow; row++)
-            {
-                if (!string.IsNullOrEmpty(worksheet.Cells[row, 5].Text)) inputsAmount++;
-            }
-            for (int row = outputsFirstRow; row <= outputsLastRow; row++)
-            {
-                if (!string.IsNullOrEmpty(worksheet.Cells[row, 5].Text)) outputsAmount++;
+                if (!string.IsNullOrEmpty(worksheet.Cells[row, 17].Text)) interlockAmount++;
             }
 
+            // FMs: Coluna D (4) a partir da linha 30
+            for (int row = fmFirstRow; row <= endRow; row++) // Usando endRow pois pode haver muitos FMs
+            {
+                if (!string.IsNullOrEmpty(worksheet.Cells[row, 4].Text)) fmAmount++;
+            }
+
+            // Folges: Coluna A (1) a partir da linha 4
+            for (int row = folgesFirstRow; row <= folgesLastRow; row++)
+            {
+                if (!string.IsNullOrEmpty(worksheet.Cells[row, 1].Text)) folgesAmount++;
+            }
+
+            // Inputs: Coluna G (7) usada como check (E->G) a partir da linha 4
+            for (int row = inputsFirstRow; row <= inputsLastRow; row++)
+            {
+                if (!string.IsNullOrEmpty(worksheet.Cells[row, 7].Text)) inputsAmount++;
+            }
+
+            // Outputs: Coluna G (7) usada como check (Compartilhada) a partir da linha 4
+            for (int row = outputsFirstRow; row <= outputsLastRow; row++)
+            {
+                // Nota: Pode precisar de um critério melhor para distinguir Input de Output se estiverem misturados
+                if (!string.IsNullOrEmpty(worksheet.Cells[row, 7].Text)) outputsAmount++;
+            }
+
+            // Limpa Grids
             dgv_Segurança.Rows.Clear();
             dgv_Ferramentas.Rows.Clear();
             dgv_Interlocks.Rows.Clear();
@@ -170,74 +220,82 @@ namespace VASS06_GeraFC_Robo
             dgv_Entradas.Rows.Clear();
             dgv_Saidas.Rows.Clear();
 
+            // === PREENCHIMENTO DOS GRIDS ===
+
+            // Segurança (Q -> 17)
             for (int i = 0; i < securityAmount; i++)
             {
-                dgv_Segurança.Rows.Add(
-                    worksheet.Cells[securityCurrentRow, 16].Text
-                );
+                dgv_Segurança.Rows.Add(worksheet.Cells[securityCurrentRow, 17].Text);
                 securityCurrentRow++;
             }
 
+            // Ferramentas (T -> 20)
             for (int i = 0; i < toolsAmount; i++)
             {
-                dgv_Ferramentas.Rows.Add(
-                    worksheet.Cells[toolsCurrentRow, 20].Text
-                );
+                dgv_Ferramentas.Rows.Add(worksheet.Cells[toolsCurrentRow, 20].Text);
                 toolsCurrentRow++;
             }
 
+            // Interlocks (Q, R, S -> 17, 18, 19)
             for (int i = 0; i < interlockAmount; i++)
             {
                 dgv_Interlocks.Rows.Add(
-                    worksheet.Cells[interlockCurrentRow, 16].Text,
                     worksheet.Cells[interlockCurrentRow, 17].Text,
-                    worksheet.Cells[interlockCurrentRow, 18].Text
+                    worksheet.Cells[interlockCurrentRow, 18].Text,
+                    worksheet.Cells[interlockCurrentRow, 19].Text
                 );
                 interlockCurrentRow++;
             }
 
+            // FMs (D, E -> 4, 5)
             for (int i = 0; i < fmAmount; i++)
             {
                 dgv_FMs.Rows.Add(
-                    worksheet.Cells[fmCurrentRow, 2].Text,
-                    worksheet.Cells[fmCurrentRow, 3].Text
+                    worksheet.Cells[fmCurrentRow, 4].Text, // ID
+                    worksheet.Cells[fmCurrentRow, 5].Text  // Descrição
                 );
                 fmCurrentRow++;
             }
 
+            // Folges (A, B -> 1, 2)
             for (int i = 0; i < folgesAmount; i++)
             {
                 dgv_Folges.Rows.Add(
-                    worksheet.Cells[folgesCurrentRow, 2].Text,
-                    worksheet.Cells[folgesCurrentRow, 3].Text
+                    worksheet.Cells[folgesCurrentRow, 1].Text, // Folge
+                    worksheet.Cells[folgesCurrentRow, 2].Text  // Descrição
                 );
                 folgesCurrentRow++;
             }
 
+            // Entradas (Inputs)
+            // Mapeamento: G(7)=Tipo, H(8)=Endereço, N(14)=Estação, I(9)=Ext, J(10)=Desc
             for (int i = 0; i < inputsAmount; i++)
             {
                 dgv_Entradas.Rows.Add(
-                    worksheet.Cells[inputsCurrentRow, 6].Text,
-                    worksheet.Cells[inputsCurrentRow, 7].Text,
-                    worksheet.Cells[inputsCurrentRow, 8].Text,
-                    worksheet.Cells[inputsCurrentRow, 9].Text,
-                    worksheet.Cells[inputsCurrentRow, 10].Text
+                    worksheet.Cells[inputsCurrentRow, 8].Text,  // Endereço (H)
+                    worksheet.Cells[inputsCurrentRow, 7].Text,  // Tipo (G)
+                    worksheet.Cells[inputsCurrentRow, 14].Text, // Estação (N)
+                    worksheet.Cells[inputsCurrentRow, 9].Text,  // Ext (I)
+                    worksheet.Cells[inputsCurrentRow, 10].Text  // Descrição (J)
                 );
                 inputsCurrentRow++;
             }
 
+            // Saídas (Outputs)
+            // Mapeamento: H(8)=Endereço, L(12)=Tipo, N(14)=Estação, M(13)=Ext, J(10)=Desc
             for (int i = 0; i < outputsAmount; i++)
             {
                 dgv_Saidas.Rows.Add(
-                    worksheet.Cells[outputsCurrentRow, 6].Text,
-                    worksheet.Cells[outputsCurrentRow, 11].Text,
-                    worksheet.Cells[outputsCurrentRow, 12].Text,
-                    worksheet.Cells[outputsCurrentRow, 13].Text,
-                    worksheet.Cells[outputsCurrentRow, 14].Text
+                    worksheet.Cells[outputsCurrentRow, 8].Text,  // Endereço (H)
+                    worksheet.Cells[outputsCurrentRow, 12].Text, // Tipo (L)
+                    worksheet.Cells[outputsCurrentRow, 14].Text, // Estação (N)
+                    worksheet.Cells[outputsCurrentRow, 13].Text, // Ext (M)
+                    worksheet.Cells[outputsCurrentRow, 10].Text  // Descrição (J - Assumida compartilhada)
                 );
                 outputsCurrentRow++;
             }
 
+            // Ajuste de altura
             dgv_Segurança.Height = dgv_Segurança.ColumnHeadersHeight + (dgv_Segurança.RowCount * dgv_Segurança.RowTemplate.Height);
             dgv_Ferramentas.Height = dgv_Ferramentas.ColumnHeadersHeight + (dgv_Ferramentas.RowCount * dgv_Ferramentas.RowTemplate.Height);
             dgv_Interlocks.Height = dgv_Interlocks.ColumnHeadersHeight + (dgv_Interlocks.RowCount * dgv_Interlocks.RowTemplate.Height);
@@ -246,8 +304,10 @@ namespace VASS06_GeraFC_Robo
             dgv_Entradas.Height = dgv_Entradas.ColumnHeadersHeight + (dgv_Entradas.RowCount * dgv_Entradas.RowTemplate.Height);
             dgv_Saidas.Height = dgv_Saidas.ColumnHeadersHeight + (dgv_Saidas.RowCount * dgv_Saidas.RowTemplate.Height);
         }
+
         private void btn_GerarArquivos_Click(object sender, EventArgs e)
         {
+            // ... (Restante do código permanece igual)
             if (worksheet == null || selectedSheetName == null)
             {
                 MessageBox.Show("Nenhuma planilha selecionada.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -306,7 +366,7 @@ namespace VASS06_GeraFC_Robo
             }
         }
 
-        //====== Configura TextBox para aceitar apenas números dentro de um intervalo ======
+        // ... (Os demais métodos auxiliares como configTXB, createDGVStyles e configs dos grids permanecem inalterados)
         private void configTXB(TextBox txb, int limiteInferior, int limiteSuperior)
         {
             txb.KeyPress += (sender, e) =>

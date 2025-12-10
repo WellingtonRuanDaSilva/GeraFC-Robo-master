@@ -107,40 +107,30 @@ Warning: The block contains direct access to inputs, outputs, bit memories, indi
           <MultilingualTextItem ID="2" CompositionName="Items">
             <AttributeList>
               <Culture>de-DE</Culture>
-              <Text />
+              <Text>Rob_[nome_robo]</Text>
             </AttributeList>
           </MultilingualTextItem>
           <MultilingualTextItem ID="3" CompositionName="Items">
             <AttributeList>
               <Culture>es-ES</Culture>
-              <Text />
+              <Text>Rob_[nome_robo]</Text>
             </AttributeList>
-          </MultilingualTextItem>
-          <MultilingualTextItem ID="4" CompositionName="Items">
-            <AttributeList>
-              <Culture>en-US</Culture>
-              <Text />
-            </AttributeList>
-          </MultilingualTextItem>
+          </MultilingualTextItem>         
+        </ObjectList>
+      </MultilingualText>
 	[proxima_network]
-      <MultilingualText ID="5" CompositionName="Title">
+      <MultilingualText ID="4" CompositionName="Title">
         <ObjectList>
-          <MultilingualTextItem ID="6" CompositionName="Items">
+          <MultilingualTextItem ID="5" CompositionName="Items">
             <AttributeList>
               <Culture>de-DE</Culture>
               <Text>Rob_[nome_robo]</Text>
             </AttributeList>
           </MultilingualTextItem>
-          <MultilingualTextItem ID="7" CompositionName="Items">
+          <MultilingualTextItem ID="6" CompositionName="Items">
             <AttributeList>
               <Culture>es-ES</Culture>
-              <Text />
-            </AttributeList>
-          </MultilingualTextItem>
-          <MultilingualTextItem ID="8" CompositionName="Items">
-            <AttributeList>
-              <Culture>en-US</Culture>
-              <Text />
+              <Text>Rob_[nome_robo]</Text>
             </AttributeList>
           </MultilingualTextItem>
         </ObjectList>

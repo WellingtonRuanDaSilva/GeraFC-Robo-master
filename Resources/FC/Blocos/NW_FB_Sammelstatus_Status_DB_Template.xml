@@ -1,90 +1,72 @@
-<SW.Blocks.CompileUnit ID="[ID_unico]" CompositionName="CompileUnits">
+      <SW.Blocks.CompileUnit ID="[ID_unico]" CompositionName="CompileUnits">
         <AttributeList>
           <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v3">
   <Parts>
-    <Access Scope="GlobalVariable" UId="[ID_tag]">
-      <Symbol>
-        <Component Name="[nome_robo]" />
-        <Component Name="Rob" />
-        <Component Name="A97_112_ProzesspunktNr" />
-        <Address Area="None" Type="Word" BlockNumber="[numero_FC]" BitOffset="48" Informative="true" />
-      </Symbol>
-    </Access>
-    <Access Scope="GlobalVariable" UId="[ID_tag]">
-      <Symbol>
-        <Component Name="[nome_robo]" />
-        <Component Name="Rob" />
-        <Component Name="A" />
-        <Component Name="A1_8_Folgespiegelung" />
-        <Address Area="None" Type="Byte" BlockNumber="[numero_FC]" BitOffset="1504" Informative="true" />
-      </Symbol>
-    </Access>
-    <Access Scope="GlobalVariable" UId="[ID_tag]">
-      <Symbol>
-        <Component Name="[nome_robo]" />
-        <Component Name="Rob" />
-        <Component Name="A" />
-        <Component Name="A17_in_Wartung" />
-        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="1576" Informative="true" />
-      </Symbol>
-    </Access>
     <Access Scope="LiteralConstant" UId="[ID_tag]">
       <Constant>
-        <ConstantType>String</ConstantType>
-        <ConstantValue>'[nome_robo]'</ConstantValue>
-        <StringAttribute Name="Format" Informative="true">String</StringAttribute>
+        <ConstantType>SInt</ConstantType>
+        <ConstantValue>2</ConstantValue>
+        <StringAttribute Name="Format" Informative="true">Dec_signed</StringAttribute>
       </Constant>
     </Access>
     <Access Scope="LiteralConstant" UId="[ID_tag]">
       <Constant>
-        <ConstantType>Word</ConstantType>
-        <ConstantValue>2#1</ConstantValue>
-        <StringAttribute Name="Format" Informative="true">Bin</StringAttribute>
+        <ConstantType>SInt</ConstantType>
+        <ConstantValue>1</ConstantValue>
+        <StringAttribute Name="Format" Informative="true">Dec_signed</StringAttribute>
       </Constant>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
         <Component Name="[nome_robo]" />
-        <Component Name="Rob" />
-        <Component Name="E" />
-        <Component Name="E16_Halt_Korr" />
-        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="128" Informative="true" />
+        <Component Name="Stoe" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="32872" Informative="true" />
       </Symbol>
     </Access>
     <Access Scope="GlobalVariable" UId="[ID_tag]">
       <Symbol>
-        <Component Name="DB_ARG" />
-        <Component Name="Proz_Nr_Rob" />
-        <Address Area="None" Type="HMI-UDT_Rob_Korr" BlockNumber="150" BitOffset="5184" Informative="true" />
+        <Component Name="[nome_robo]" />
+        <Component Name="Warn" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="32864" Informative="true" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="[ID_tag]">
+      <Symbol>
+        <Component Name="[nome_robo]" />
+        <Component Name="Wart" />
+        <Address Area="None" Type="Bool" BlockNumber="[numero_FC]" BitOffset="32880" Informative="true" />
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="[ID_tag]">
+      <Symbol>
+        <Component Name="Temp" />
+        <Component Name="_Bool" />
       </Symbol>
     </Access>
     <Call UId="[ID_bloco]">
-      <CallInfo Name="FB_Rob_Korr" BlockType="FB">
-        <IntegerAttribute Name="BlockNumber" Informative="true">206</IntegerAttribute>
-        <DateAttribute Name="ParameterModifiedTS" Informative="true">2018-04-03T12:53:11</DateAttribute>
+      <CallInfo Name="FB_Sammelstatus" BlockType="FB">
+        <IntegerAttribute Name="BlockNumber" Informative="true">114</IntegerAttribute>
+        <DateAttribute Name="ParameterModifiedTS" Informative="true">2017-08-01T13:02:58</DateAttribute>
         <Instance Scope="GlobalVariable" UId="[ID_instancia]">
-          <Component Name="[nome_robo]#FB_Rob_Korr_DB" />
-          <Address Area="DB" Type="FB_Rob_Korr" BlockNumber="2089" BitOffset="0" Informative="true" />
+          <Component Name="[nome_robo]#FB_Sammelstatus_DB" />
+          <Address Area="DB" Type="FB_Sammelstatus" BlockNumber="2104" BitOffset="0" Informative="true" />
         </Instance>
-        <Parameter Name="ProzP_Nr" Section="Input" Type="Word">
+        <Parameter Name="Cfg" Section="Input" Type="SInt">
           <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
         </Parameter>
-        <Parameter Name="SpiegelungFolge" Section="Input" Type="Byte">
+        <Parameter Name="Layer" Section="Input" Type="SInt">
           <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
         </Parameter>
-        <Parameter Name="deaktivieren" Section="Input" Type="Bool">
+        <Parameter Name="Stoe" Section="Output" Type="Bool">
           <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
         </Parameter>
-        <Parameter Name="BMK" Section="Input" Type="String[25]">
+        <Parameter Name="Warn" Section="Output" Type="Bool">
           <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
         </Parameter>
-        <Parameter Name="Cfg" Section="Input" Type="Word">
+        <Parameter Name="Wart" Section="Output" Type="Bool">
           <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
         </Parameter>
-        <Parameter Name="Halt_Korr" Section="InOut" Type="Bool">
-          <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
-        </Parameter>
-        <Parameter Name="Proz_Nr_Rob" Section="InOut" Type="&quot;HMI-UDT_Rob_Korr&quot;">
+        <Parameter Name="Para_Fehler" Section="Output" Type="Bool">
           <StringAttribute Name="InterfaceFlags" Informative="true">S7_Visible</StringAttribute>
         </Parameter>
       </CallInfo>
@@ -97,31 +79,27 @@
     </Wire>
     <Wire UId="[ID_unico]">
       <IdentCon UId="[ID_tag]" />
-      <NameCon UId="[ID_bloco]" Name="ProzP_Nr" />
-    </Wire>
-    <Wire UId="[ID_unico]">
-      <IdentCon UId="[ID_tag]" />
-      <NameCon UId="[ID_bloco]" Name="SpiegelungFolge" />
-    </Wire>
-    <Wire UId="[ID_unico]">
-      <IdentCon UId="[ID_tag]" />
-      <NameCon UId="[ID_bloco]" Name="deaktivieren" />
-    </Wire>
-    <Wire UId="[ID_unico]">
-      <IdentCon UId="[ID_tag]" />
-      <NameCon UId="[ID_bloco]" Name="BMK" />
-    </Wire>
-    <Wire UId="[ID_unico]">
-      <IdentCon UId="[ID_tag]" />
       <NameCon UId="[ID_bloco]" Name="Cfg" />
     </Wire>
     <Wire UId="[ID_unico]">
       <IdentCon UId="[ID_tag]" />
-      <NameCon UId="[ID_bloco]" Name="Halt_Korr" />
+      <NameCon UId="[ID_bloco]" Name="Layer" />
     </Wire>
     <Wire UId="[ID_unico]">
+      <NameCon UId="[ID_bloco]" Name="Stoe" />
       <IdentCon UId="[ID_tag]" />
-      <NameCon UId="[ID_bloco]" Name="Proz_Nr_Rob" />
+    </Wire>
+    <Wire UId="[ID_unico]">
+      <NameCon UId="[ID_bloco]" Name="Warn" />
+      <IdentCon UId="[ID_tag]" />
+    </Wire>
+    <Wire UId="[ID_unico]">
+      <NameCon UId="[ID_bloco]" Name="Wart" />
+      <IdentCon UId="[ID_tag]" />
+    </Wire>
+    <Wire UId="[ID_unico]">
+      <NameCon UId="[ID_bloco]" Name="Para_Fehler" />
+      <IdentCon UId="[ID_tag]" />
     </Wire>
   </Wires>
 </FlgNet></NetworkSource>
@@ -155,19 +133,19 @@
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>de-DE</Culture>
-                  <Text>Roboter Halt zum Korrigieren</Text>
+                  <Text>Status Roboter</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>es-ES</Culture>
-                  <Text>[titulo_network]</Text>
+                  <Text>Status Roboter</Text>
                 </AttributeList>
               </MultilingualTextItem>
               <MultilingualTextItem ID="[ID_unico]" CompositionName="Items">
                 <AttributeList>
                   <Culture>en-US</Culture>
-                  <Text>[titulo_network]</Text>
+                  <Text>Status Roboter</Text>
                 </AttributeList>
               </MultilingualTextItem>
             </ObjectList>

@@ -484,6 +484,19 @@ namespace VASS06_GeraFC_Robo
             fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
             if (data.DBInstanzenNumber < 20000) data.DBInstanzenNumber++;
 
+            // Bloco - Status do robo (FB_Sammelstatus_Status_DB)
+            // =================================================================
+            networkContent = Criar_Bloco("NW_FB_Sammelstatus_Status_DB_Template.xml", "Status Roboter", 6, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter, fcNumber: data.FCNumber.ToString());
+            fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
+            if (data.DBInstanzenNumber < 20000) data.DBInstanzenNumber++;
+
+
+            // Bloco - Status dos equipamentos (FB_Sammelstatus_End_DB)
+            // =================================================================
+            networkContent = Criar_Bloco("NW_FB_Sammelstatus_End_DB_Template.xml", "Status Prozessgeräte", 6, RobName, "1500", data.DBInstanzenNumber.ToString(), ref idCounter, fcNumber: data.FCNumber.ToString());
+            fcContent = fcContent.Replace("[proxima_network]", networkContent + Environment.NewLine + "[proxima_network]");
+            if (data.DBInstanzenNumber < 20000) data.DBInstanzenNumber++;
+
 
             // Bloco Final: Salvar o arquivo FC completo
             // =================================================================

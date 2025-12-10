@@ -1,7 +1,7 @@
 <SW.Blocks.CompileUnit ID="[ID_0]" CompositionName="CompileUnits">
   <AttributeList>
     <NetworkSource>
-      <FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+      <FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v3">
         <Parts>
           <Access Scope="GlobalVariable" UId="[ID_1]">
             <Symbol>
@@ -147,12 +147,6 @@
         <MultilingualTextItem ID="[ID_36]" CompositionName="Items">
           <AttributeList>
             <Culture>de-DE</Culture>
-            <Text>[titulo_network]</Text>
-          </AttributeList>
-        </MultilingualTextItem>
-        <MultilingualTextItem ID="[ID_37]" CompositionName="Items">
-          <AttributeList>
-            <Culture>pt-BR</Culture>
             <Text>[titulo_network]</Text>
           </AttributeList>
         </MultilingualTextItem>

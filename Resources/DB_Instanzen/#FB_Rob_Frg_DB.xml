@@ -2,7 +2,7 @@
 <Document>
   <Engineering version="V15.1" />
   <DocumentInfo>
-    <Created>2025-12-09T12:00:04.7818522Z</Created>
+    <Created>2025-12-09T12:23:01.4294541Z</Created>
     <ExportSetting>WithDefaults, WithReadOnly</ExportSetting>
     <InstalledProducts>
       <Product>
@@ -51,10 +51,9 @@
     <AttributeList>
       <AutoNumber>false</AutoNumber>
       <CodeModifiedDate ReadOnly="true">2018-04-08T13:12:50.0407154Z</CodeModifiedDate>
-      <CompileDate ReadOnly="true">2024-11-07T14:08:56.7310046Z</CompileDate>
-      <CreationDate ReadOnly="true">2024-09-18T08:44:27.9878747Z</CreationDate>
-      <DBAccessibleFromOPCUA>false</DBAccessibleFromOPCUA>
-      <DBAccessibleFromWebserver>true</DBAccessibleFromWebserver>
+      <CompileDate ReadOnly="true">2019-04-01T14:36:11.4555261Z</CompileDate>
+      <CreationDate ReadOnly="true">2017-04-11T19:23:05.038059Z</CreationDate>
+      <DBAccessibleFromOPCUA>true</DBAccessibleFromOPCUA>
       <DownloadWithoutReinit ReadOnly="true">false</DownloadWithoutReinit>
       <HeaderAuthor>VASS_V05</HeaderAuthor>
       <HeaderFamily>ROBFRG</HeaderFamily>
@@ -90,9 +89,9 @@
       <IsConsistent ReadOnly="true">true</IsConsistent>
       <IsKnowHowProtected ReadOnly="true">false</IsKnowHowProtected>
       <IsRetainMemResEnabled ReadOnly="true">false</IsRetainMemResEnabled>
-      <MemoryLayout ReadOnly="true">Optimized</MemoryLayout>
+      <MemoryLayout>Optimized</MemoryLayout>
       <MemoryReserve ReadOnly="true">0</MemoryReserve>
-      <ModifiedDate ReadOnly="true">2024-11-12T16:05:12.7950309Z</ModifiedDate>
+      <ModifiedDate ReadOnly="true">2018-04-08T13:12:50.0407154Z</ModifiedDate>
       <Name>[nome_robo][numero_frg]#FB_Rob_Frg_DB</Name>
       <Number>[numero_db]</Number>
       <ParameterModified ReadOnly="true">2017-08-01T16:24:04.7546001Z</ParameterModified>
@@ -101,7 +100,7 @@
       <Supervisions ReadOnly="true"><BlockInstSupervisionGroups xmlns="http://www.siemens.com/automation/Openness/SW/BlockInstanceSupervisions/v2">
   <BlockInstSupervisionGroup>
     <BlockInstSupervision>
-      <Number>46</Number>
+      <Number>339</Number>
       <StateStruct Name="[nome_robo][numero_frg]#FB_Rob_Frg_DB.#255_O_1" />
       <BlockTypeSupervisionNumber>1</BlockTypeSupervisionNumber>
     </BlockInstSupervision>
@@ -121,59 +120,35 @@
           </MultilingualTextItem>
           <MultilingualTextItem ID="3" CompositionName="Items">
             <AttributeList>
-              <Culture>sk-SK</Culture>
-              <Text>Werkzeugfreigaben</Text>
-            </AttributeList>
-          </MultilingualTextItem>
-          <MultilingualTextItem ID="4" CompositionName="Items">
-            <AttributeList>
               <Culture>es-ES</Culture>
               <Text />
             </AttributeList>
           </MultilingualTextItem>
-          <MultilingualTextItem ID="5" CompositionName="Items">
+          <MultilingualTextItem ID="4" CompositionName="Items">
             <AttributeList>
               <Culture>en-US</Culture>
-              <Text />
-            </AttributeList>
-          </MultilingualTextItem>
-          <MultilingualTextItem ID="6" CompositionName="Items">
-            <AttributeList>
-              <Culture>pt-BR</Culture>
               <Text />
             </AttributeList>
           </MultilingualTextItem>
         </ObjectList>
       </MultilingualText>
-      <MultilingualText ID="7" CompositionName="Title">
+      <MultilingualText ID="5" CompositionName="Title">
         <ObjectList>
-          <MultilingualTextItem ID="8" CompositionName="Items">
+          <MultilingualTextItem ID="6" CompositionName="Items">
             <AttributeList>
               <Culture>de-DE</Culture>
               <Text />
             </AttributeList>
           </MultilingualTextItem>
-          <MultilingualTextItem ID="9" CompositionName="Items">
-            <AttributeList>
-              <Culture>sk-SK</Culture>
-              <Text />
-            </AttributeList>
-          </MultilingualTextItem>
-          <MultilingualTextItem ID="A" CompositionName="Items">
+          <MultilingualTextItem ID="7" CompositionName="Items">
             <AttributeList>
               <Culture>es-ES</Culture>
               <Text />
             </AttributeList>
           </MultilingualTextItem>
-          <MultilingualTextItem ID="B" CompositionName="Items">
+          <MultilingualTextItem ID="8" CompositionName="Items">
             <AttributeList>
               <Culture>en-US</Culture>
-              <Text />
-            </AttributeList>
-          </MultilingualTextItem>
-          <MultilingualTextItem ID="C" CompositionName="Items">
-            <AttributeList>
-              <Culture>pt-BR</Culture>
               <Text />
             </AttributeList>
           </MultilingualTextItem>

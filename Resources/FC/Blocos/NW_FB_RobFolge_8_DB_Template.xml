@@ -236,7 +236,7 @@
       <NameCon UId="[ID_bloco]" Name="FrgFolge2" />
     </Wire>
     <Wire UId="[ID_unico]">
-      <IdentCon UId="[ID_tag][ID_tag]" />
+      <IdentCon UId="[ID_tag]" />
       <NameCon UId="[ID_bloco]" Name="Folge2" />
     </Wire>
     <Wire UId="[ID_unico]">

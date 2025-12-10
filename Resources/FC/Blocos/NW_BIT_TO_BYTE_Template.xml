@@ -130,12 +130,6 @@
             <Text>Typ an Roboter</Text>
           </AttributeList>
         </MultilingualTextItem>
-        <MultilingualTextItem ID="[ID_23]" CompositionName="Items">
-          <AttributeList>
-            <Culture>pt-BR</Culture>
-            <Text>[titulo_network]</Text>
-          </AttributeList>
-        </MultilingualTextItem>
       </ObjectList>
     </MultilingualText>
   </ObjectList>
